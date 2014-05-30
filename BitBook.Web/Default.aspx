@@ -1,6 +1,12 @@
 ﻿<%@ Page Title="Home Page" EnableEventValidation="false" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="BitBook.Web._Default" %>
 
 <asp:Content runat="server" ID="Head" ContentPlaceHolderID="HeadContent">
+    <script src="Scripts/jquery-1.8.2.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#SearchBarTextBox").hide();
+        });
+    </script>
 </asp:Content>
 <asp:Content runat="server" ID="BodyContent" ContentPlaceHolderID="MainContent">
 
@@ -15,8 +21,6 @@
                     <label>PASSWORD</label>
                     <input type="text" placeholder="Insert your password" />
                     <input type="submit" class="button right" value="Sign in" />--%>
-
-
 
                     <asp:Label ID="SignInEmailLabel" runat="server" Text="Email"></asp:Label>
                     <asp:TextBox ID="SignInEmailTextBox" runat="server" TextMode="Email"></asp:TextBox>

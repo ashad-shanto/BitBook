@@ -71,7 +71,8 @@
                     <section class="large-10 columns">
                         <ul class="search-area">
                             <li class="search ">
-                                <input type="search" placeholder="Look for friends and people." />
+                                <%--<input type="search" placeholder="Look for friends and people." />--%>
+                                <asp:TextBox ID="SearchBarTextBox" runat="server" placeholder="Look for friends and people baby" />
                             </li>
                         </ul>
                     </section>
