@@ -21,7 +21,7 @@ namespace BitBook.Repository.DataAccess
                       Query<User>.EQ(e => e.Email, email),
                       Query<User>.EQ(e => e.Password, userPass)
                   );
-                aUser = Collection.FindAs<User>(query).Single();
+                aUser = Collection.FindAs<User>(query).FirstOrDefault();
             }
             catch (Exception ex)
             {
@@ -101,6 +101,22 @@ namespace BitBook.Repository.DataAccess
                 throw new Exception("Error modifying data" + ex);
             }
             return modifySuccess;
+        }
+
+
+        public ObjectId AddUser(User aUser)
+        {
+            try
+            {
+                Collection.Insert(aUser);
+                return aUser._id;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
         }
     }
 }

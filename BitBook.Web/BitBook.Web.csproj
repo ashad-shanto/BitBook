@@ -135,57 +135,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="About.aspx" />
-    <Content Include="Account\Login.aspx" />
-    <Content Include="Account\Manage.aspx" />
     <Content Include="Account\OpenAuthProviders.ascx" />
-    <Content Include="Account\Register.aspx" />
     <Content Include="Account\RegisterExternalLogin.aspx" />
-    <Content Include="bin\Antlr3.Runtime.dll" />
-    <Content Include="bin\AspNet.ScriptManager.jQuery.dll" />
-    <Content Include="bin\AspNet.ScriptManager.jQuery.UI.Combined.dll" />
-    <Content Include="bin\BitBook.Manager.dll" />
-    <Content Include="bin\BitBook.Manager.pdb" />
-    <Content Include="bin\BitBook.Model.dll" />
-    <Content Include="bin\BitBook.Model.pdb" />
-    <Content Include="bin\BitBook.Repository.dll" />
-    <Content Include="bin\BitBook.Repository.pdb" />
-    <Content Include="bin\BitBook.Web.dll" />
-    <Content Include="bin\BitBook.Web.pdb" />
-    <Content Include="bin\CodeCarvings.Piczard.dll" />
-    <Content Include="bin\CodeCarvings.Piczard.xml" />
-    <Content Include="bin\DotNetOpenAuth.AspNet.dll" />
-    <Content Include="bin\DotNetOpenAuth.AspNet.xml" />
-    <Content Include="bin\DotNetOpenAuth.Core.dll" />
-    <Content Include="bin\DotNetOpenAuth.Core.xml" />
-    <Content Include="bin\DotNetOpenAuth.OAuth.Consumer.dll" />
-    <Content Include="bin\DotNetOpenAuth.OAuth.Consumer.xml" />
-    <Content Include="bin\DotNetOpenAuth.OAuth.dll" />
-    <Content Include="bin\DotNetOpenAuth.OAuth.xml" />
-    <Content Include="bin\DotNetOpenAuth.OpenId.dll" />
-    <Content Include="bin\DotNetOpenAuth.OpenId.RelyingParty.dll" />
-    <Content Include="bin\DotNetOpenAuth.OpenId.RelyingParty.xml" />
-    <Content Include="bin\DotNetOpenAuth.OpenId.xml" />
-    <Content Include="bin\EntityFramework.dll" />
-    <Content Include="bin\EntityFramework.xml" />
-    <Content Include="bin\Microsoft.AspNet.FriendlyUrls.dll" />
-    <Content Include="bin\Microsoft.AspNet.FriendlyUrls.xml" />
-    <Content Include="bin\Microsoft.AspNet.Membership.OpenAuth.dll" />
-    <Content Include="bin\Microsoft.AspNet.Membership.OpenAuth.xml" />
-    <Content Include="bin\Microsoft.AspNet.Web.Optimization.WebForms.dll" />
-    <Content Include="bin\Microsoft.ScriptManager.MSAjax.dll" />
-    <Content Include="bin\Microsoft.ScriptManager.WebForms.dll" />
-    <Content Include="bin\Microsoft.Web.Infrastructure.dll" />
-    <Content Include="bin\MongoDB.Bson.dll" />
-    <Content Include="bin\MongoDB.Bson.xml" />
-    <Content Include="bin\MongoDB.Driver.dll" />
-    <Content Include="bin\MongoDB.Driver.xml" />
-    <Content Include="bin\Mono.Math.dll" />
-    <Content Include="bin\Mono.Math.xml" />
-    <Content Include="bin\Org.Mentalis.Security.Cryptography.dll" />
-    <Content Include="bin\Org.Mentalis.Security.Cryptography.xml" />
-    <Content Include="bin\System.Web.Optimization.dll" />
-    <Content Include="bin\System.Web.Providers.dll" />
-    <Content Include="bin\WebGrease.dll" />
     <Content Include="Contact.aspx" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
@@ -265,7 +216,6 @@
     <Content Include="piczardUserControls\simpleImageUploadUserControl\blank.gif" />
     <Content Include="piczardUserControls\simpleImageUploadUserControl\preview.ashx" />
     <Content Include="piczardUserControls\simpleImageUploadUserControl\uploadMonitor.ashx" />
-    <None Include="bin\BitBook.Web.dll.config" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="BitBooks\Profile.aspx" />
     <Content Include="piczardUserControls\simpleImageUploadUserControl\SimpleImageUpload.ascx" />
@@ -322,30 +272,12 @@
     <Compile Include="About.aspx.designer.cs">
       <DependentUpon>About.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Account\Login.aspx.cs">
-      <DependentUpon>Login.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Account\Login.aspx.designer.cs">
-      <DependentUpon>Login.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Account\Manage.aspx.cs">
-      <DependentUpon>Manage.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Account\Manage.aspx.designer.cs">
-      <DependentUpon>Manage.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Account\OpenAuthProviders.ascx.cs">
       <DependentUpon>OpenAuthProviders.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Account\OpenAuthProviders.ascx.designer.cs">
       <DependentUpon>OpenAuthProviders.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="Account\Register.aspx.cs">
-      <DependentUpon>Register.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Account\Register.aspx.designer.cs">
-      <DependentUpon>Register.aspx</DependentUpon>
     </Compile>
     <Compile Include="Account\RegisterExternalLogin.aspx.cs">
       <DependentUpon>RegisterExternalLogin.aspx</DependentUpon>

@@ -7,13 +7,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BitBook.Web
-{
-
-
-    public partial class SiteMaster
-    {
-
+namespace BitBook.Web {
+    
+    
+    public partial class SiteMaster {
+        
         /// <summary>
         /// HeadContent control.
         /// </summary>
@@ -22,7 +20,25 @@ namespace BitBook.Web
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ContentPlaceHolder HeadContent;
-
+        
+        /// <summary>
+        /// LogPanel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel LogPanel;
+        
+        /// <summary>
+        /// Label1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label1;
+        
         /// <summary>
         /// FeaturedContent control.
         /// </summary>
@@ -31,7 +47,7 @@ namespace BitBook.Web
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ContentPlaceHolder FeaturedContent;
-
+        
         /// <summary>
         /// MainContent control.
         /// </summary>

@@ -22,9 +22,10 @@
 <asp:Content ID="body" runat="server" ContentPlaceHolderID="MainContent">
     <asp:Panel runat="server" ID="panel1">
         <div style="float:left; height:auto; width:30%;">
-        <asp:Image ID="Image1" runat="server" ImageUrl="~/Images/default.png" Height="200px" Width="200px" />
+        <asp:Image ID="Image1" runat="server" ImageUrl="~/Images/ProPic/default.png" Height="200px" Width="200px" />
             <ccPiczardUC:SimpleImageUpload ID="Upload" runat="server" Visible="false" />
-            <asp:Button ID="ImageButton" runat="server" Text="Upload Profile Picture" OnClick="ImageButton_Click" />
+            <asp:Button ID="ImageButton" runat="server" Text="Update Profile Picture" OnClick="ImageButton_Click" />
+            <asp:Button ID="UpdateImage" runat="server" Text="Upload" OnClick="UpdateImage_Click" Visible="false" />
         <h2 style="text-align:left;">
             <asp:Label ID="Name" runat="server" Text="Moinul Hasan"></asp:Label>
             <asp:TextBox ID="txtName" runat="server" Visible="false"></asp:TextBox>

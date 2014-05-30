@@ -8,6 +8,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using BitBook.Model;
 using CodeCarvings.Piczard;
+using MongoDB.Bson;
 
 namespace BitBook.Web
 {
@@ -17,14 +18,21 @@ namespace BitBook.Web
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            //id = Session["UserId"].ToString();
-            if (!this.IsPostBack)
+            if(Session["UserId"] != null)
             {
-                this.Upload.AutoOpenImageEditPopupAfterUpload = true;
-                this.Upload.CropConstraint = new FixedCropConstraint(300, 300);
-                this.Upload.CropConstraint.DefaultImageSelectionStrategy = CropConstraintImageSelectionStrategy.WholeImage;
-                this.Upload.PreviewFilter = new FixedResizeConstraint(150, 150);
-                ShowData();
+                id = Session["UserId"].ToString();
+                if (!this.IsPostBack)
+                {
+                    this.Upload.AutoOpenImageEditPopupAfterUpload = true;
+                    this.Upload.CropConstraint = new FixedCropConstraint(300, 300);
+                    this.Upload.CropConstraint.DefaultImageSelectionStrategy = CropConstraintImageSelectionStrategy.WholeImage;
+                    this.Upload.PreviewFilter = new FixedResizeConstraint(150, 150);
+                    ShowData();
+                }
+            }
+            else
+            {
+                Response.Redirect("~/Default.aspx");
             }
         }
 
@@ -32,12 +40,16 @@ namespace BitBook.Web
         {
             try
             {
-                //UserInformation info = new UserInformation();
-                //User aUser = new User();
-                //aUser = info.GetUserById(id);
-                //Name.Text = aUser.UserName;
-                //Email.Text = aUser.Email;
-                //Location.Text = aUser.UserCity + ", " + aUser.UserCountry;
+                UserInformation info = new UserInformation();
+                User aUser = new User();
+                aUser = info.GetUserById(id);
+                Name.Text = aUser.UserName;
+                Email.Text = aUser.Email;
+                Location.Text = aUser.UserCity + ", " + aUser.UserCountry;
+                if(aUser.ProfilePic != null)
+                {
+                    Image1.ImageUrl = "~/Images/Propic/" + aUser.ProfilePic;
+                }
             }
             catch(Exception ex)
             {
@@ -62,12 +74,14 @@ namespace BitBook.Web
         {
             try
             {
-                //UserInformation info = new UserInformation();
-                //User aUser = new User();
-                //aUser.UserName = txtName.Text;
-                //aUser.Email = txtEmail.Text;
-                //aUser.UserCity = txtCity.Text;
-                //aUser.UserCountry = txtCountry.Text;
+                UserInformation info = new UserInformation();
+                User aUser = new User();
+                aUser._id = new ObjectId(Session["UserId"].ToString());
+                aUser.UserName = txtName.Text;
+                aUser.Email = txtEmail.Text;
+                aUser.UserCity = txtCity.Text;
+                aUser.UserCountry = txtCountry.Text;
+                info.UpdateUserData(aUser);
             }
             catch
             {
@@ -81,22 +95,27 @@ namespace BitBook.Web
 
         protected void ImageButton_Click(object sender, EventArgs e)
         {
-            if (Upload.Visible == true)
-            {
-                Upload.Visible = false;
-            }
-            else
-            {
-                Upload.Visible = true;
-            }
-            if(Upload.Visible == true && Upload.HasImage)
+            Upload.Visible = true;
+            UpdateImage.Visible = true;
+            ImageButton.Visible = false;
+        }
+
+        protected void UpdateImage_Click(object sender, EventArgs e)
+        {
+            if (Upload.HasImage)
             {
                 string imgsource = Upload.SourceImageClientFileName;
                 string imgoutname = CodeCarvings.Piczard.Helpers.IOHelper.GetUniqueFileName("~/Images/ProPic/", imgsource);
                 string imgoutpath = CodeCarvings.Piczard.Helpers.IOHelper.GetUniqueFilePath("~/Images/ProPic/", imgsource);
                 Upload.SaveProcessedImageToFileSystem(imgoutpath);
                 this.Upload.SaveProcessedImageToFileSystem(imgoutpath, new JpegFormatEncoderParams(92));
+                UserInformation info = new UserInformation();
+                info.UpdateProfilePic(Session["UserId"].ToString(), imgoutname);
+                ShowData();
             }
+            Upload.Visible = false;
+            UpdateImage.Visible = false;
+            ImageButton.Visible = true;
         }
     }
 }
