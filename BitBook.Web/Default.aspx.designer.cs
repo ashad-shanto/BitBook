@@ -13,15 +13,6 @@ namespace BitBook.Web {
     public partial class _Default {
         
         /// <summary>
-        /// SignInEmailLabel control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label SignInEmailLabel;
-        
-        /// <summary>
         /// SignInEmailTextBox control.
         /// </summary>
         /// <remarks>
@@ -38,15 +29,6 @@ namespace BitBook.Web {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator SignInEmailRequiredValidator;
-        
-        /// <summary>
-        /// SignInPasswordLabel control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label SignInPasswordLabel;
         
         /// <summary>
         /// SignInPasswordTextox control.
@@ -76,15 +58,6 @@ namespace BitBook.Web {
         protected global::System.Web.UI.WebControls.Button LoginButton;
         
         /// <summary>
-        /// userNameLabel control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label userNameLabel;
-        
-        /// <summary>
         /// SignUpUserNameTextBox control.
         /// </summary>
         /// <remarks>
@@ -101,15 +74,6 @@ namespace BitBook.Web {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator1;
-        
-        /// <summary>
-        /// SignUpEmail control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label SignUpEmail;
         
         /// <summary>
         /// SignUpEmailTextBox control.
@@ -130,15 +94,6 @@ namespace BitBook.Web {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator2;
         
         /// <summary>
-        /// SignUpPasswordLabel control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label SignUpPasswordLabel;
-        
-        /// <summary>
         /// SignUpPasswordTextBox control.
         /// </summary>
         /// <remarks>
@@ -155,15 +110,6 @@ namespace BitBook.Web {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator SignUpPasswordRequiredValidator;
-        
-        /// <summary>
-        /// confirmPasswordLabel control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label confirmPasswordLabel;
         
         /// <summary>
         /// SignUpConfirmPasswordTextBox control.

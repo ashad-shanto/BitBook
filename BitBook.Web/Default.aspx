@@ -13,63 +13,43 @@
     <div class="row">
         <div class="large-6 columns">
             <h3 class="welcome-message">Welcome to BitBook. Connect with friends, meet new people, stay in sync.</h3>
-            <form>
                 <fieldset>
                     <h6>Log in</h6>
-                    <%--<label>USERNAME</label>
-                    <input type="text" placeholder="Insert email or username" />
+                    <label>USERNAME</label>
+                    <asp:TextBox ID="SignInEmailTextBox" runat="server" placeholder="Insert email or username" TextMode="Email"></asp:TextBox>
+                    <asp:RequiredFieldValidator ID="SignInEmailRequiredValidator" CssClass="validation-message" runat="server" ControlToValidate="SignInEmailTextBox" ErrorMessage="Username is required" ValidationGroup="SignInValidationGroup"></asp:RequiredFieldValidator>
+
                     <label>PASSWORD</label>
-                    <input type="text" placeholder="Insert your password" />
-                    <input type="submit" class="button right" value="Sign in" />--%>
+                    <asp:TextBox ID="SignInPasswordTextox" runat="server" placeholder="Insert your password" TextMode="Password" ></asp:TextBox>
+                    <asp:RequiredFieldValidator ID="PasswordFieldValidator" CssClass="validation-message" runat="server" ControlToValidate="SignInPasswordTextox" ErrorMessage="Password is Required" ValidationGroup="SignInValidationGroup"></asp:RequiredFieldValidator>
 
-                    <asp:Label ID="SignInEmailLabel" runat="server" Text="Email"></asp:Label>
-                    <asp:TextBox ID="SignInEmailTextBox" runat="server" TextMode="Email"></asp:TextBox>
-                    <asp:RequiredFieldValidator ID="SignInEmailRequiredValidator" runat="server" ControlToValidate="SignInEmailTextBox" ErrorMessage="Email Is Required" ValidationGroup="SignInValidationGroup"></asp:RequiredFieldValidator>
-                    
-                    <asp:Label ID="SignInPasswordLabel" runat="server" Text="Password"></asp:Label>
-                    <asp:TextBox ID="SignInPasswordTextox" runat="server" TextMode="Password"></asp:TextBox>
-                    <asp:RequiredFieldValidator ID="PasswordFieldValidator" runat="server" ControlToValidate="SignInPasswordTextox" ErrorMessage="Password Is Required" ValidationGroup="SignInValidationGroup"></asp:RequiredFieldValidator>
-
-                    <asp:Button ID="LoginButton" runat="server" OnClick="LoginButton_Click" Text="Log In" />
+                    <asp:Button ID="LoginButton" runat="server" CssClass="button right" OnClick="LoginButton_Click" Text="Sign In" ValidationGroup="SignInValidationGroup" />
                 </fieldset>
-            </form>
         </div>
 
         <div class="large-6 columns">
-                <fieldset>
-                    <h6>Don't have an account? Sign up</h6>
-                    <%--<label>NAME</label>
-                    <input type="text" placeholder="Enter desired name" />
-                    <label>EMAIL</label>
-                    <input type="text" placeholder="Enter desired e-mail" />
-                    <label>PASSWORD</label>
-                    <input type="password" placeholder="Enter desired password" />
-                    <label>CONFIRM PASSWORD</label>
-                    <input type="password" placeholder="Repeat your password" />
-                    <input type="submit" class="button" value="Sign up" />--%>
+            <fieldset class="sign-up">
+                <h6>Don't have an account? Sign up</h6>
+                <%--name--%>
+                <label>NAME</label>
+                <asp:TextBox ID="SignUpUserNameTextBox" runat="server" placeholder="Enter desired name"></asp:TextBox>
+                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" CssClass="validation-message" runat="server" ControlToValidate="SignUpUserNameTextBox" ErrorMessage="Name is Required" ValidationGroup="SignUpValidationGroup"></asp:RequiredFieldValidator>
 
-
-                    <asp:Label ID="userNameLabel" runat="server" Text="User Name"></asp:Label>
-                    <asp:TextBox ID="SignUpUserNameTextBox" runat="server"></asp:TextBox>
-                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="SignUpUserNameTextBox" ErrorMessage="User Name Required" ValidationGroup="SignUpValidationGroup"></asp:RequiredFieldValidator>
-                    <br />
-                    <asp:Label ID="SignUpEmail" runat="server" Text="Email"></asp:Label>
-                    <asp:TextBox ID="SignUpEmailTextBox" runat="server" TextMode="Email"></asp:TextBox>
-                    <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="SignUpEmailTextBox" ErrorMessage="Email Required" ValidationGroup="SignUpValidationGroup"></asp:RequiredFieldValidator>
-                    <br />
-                    <asp:Label ID="SignUpPasswordLabel" runat="server" Text="Password"></asp:Label>
-                    <asp:TextBox ID="SignUpPasswordTextBox" runat="server" TextMode="Password"></asp:TextBox>
-                    <asp:RequiredFieldValidator ID="SignUpPasswordRequiredValidator" runat="server" ControlToValidate="SignUpPasswordTextBox" ErrorMessage="Password Required" ValidationGroup="SignUpValidationGroup"></asp:RequiredFieldValidator>
-                    <br />
-                    <asp:Label ID="confirmPasswordLabel" runat="server" Text="Confirm Password"></asp:Label>
-                    <asp:TextBox ID="SignUpConfirmPasswordTextBox" TextMode="Password" runat="server"></asp:TextBox>
-                    <asp:RequiredFieldValidator ID="SignUpConfirmPasswordRequired" runat="server" ControlToValidate="SignUpConfirmPasswordTextBox" ErrorMessage="Confirm Your Password" ValidationGroup="SignUpValidationGroup"></asp:RequiredFieldValidator>
-                    <br />
-
-                    <asp:Button ID="SubmitButton" runat="server" Text="Submit" OnClick="SubmitButton_Click" />
-
-                    
-                </fieldset>
+                <%--email--%>
+                <label>EMAIL</label>
+                <asp:TextBox ID="SignUpEmailTextBox" runat="server" placeholder="Enter desired e-mail" TextMode="Email"></asp:TextBox>
+                <asp:RequiredFieldValidator ID="RequiredFieldValidator2" CssClass="validation-message" runat="server" ControlToValidate="SignUpEmailTextBox" ErrorMessage="Email is Required" ValidationGroup="SignUpValidationGroup"></asp:RequiredFieldValidator>
+                <%--password--%>
+                <label>PASSWORD</label>
+                <asp:TextBox ID="SignUpPasswordTextBox" placeholder="Enter password" runat="server" TextMode="Password" ></asp:TextBox>
+                <asp:RequiredFieldValidator ID="SignUpPasswordRequiredValidator" CssClass="validation-message" runat="server" ControlToValidate="SignUpPasswordTextBox" ErrorMessage="Password is Required" ValidationGroup="SignUpValidationGroup"></asp:RequiredFieldValidator>
+                <%--confirm password--%>
+                <label>CONFIRM PASSWORD</label>
+                <asp:TextBox ID="SignUpConfirmPasswordTextBox" placeholder="Repeat your password" TextMode="Password" runat="server"></asp:TextBox>
+                <asp:RequiredFieldValidator ID="SignUpConfirmPasswordRequired" CssClass="validation-message" runat="server" ControlToValidate="SignUpConfirmPasswordTextBox" ErrorMessage="Confirm password is required" ValidationGroup="SignUpValidationGroup"></asp:RequiredFieldValidator>
+                <br />
+                <asp:Button ID="SubmitButton" runat="server" CssClass="button" Text="Sign Up" OnClick="SubmitButton_Click" ValidationGroup="SignUpValidationGroup" />
+            </fieldset>
         </div>
     </div>
 </asp:Content>

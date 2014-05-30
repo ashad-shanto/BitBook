@@ -13,7 +13,11 @@ namespace BitBook.Web.Account
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            Clear();
+            if (!IsPostBack) 
+            {
+                Clear();
+            }
+            
         }
 
         protected void SubmitButton_Click(object sender, EventArgs e)
