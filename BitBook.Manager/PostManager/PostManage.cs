@@ -35,7 +35,7 @@ namespace BitBook.Manager.PostManager
                 return repo.Add(aPost);
             }
         }
-        public bool CreatePhotoPost(UserBasic author, string photoName, string caption)
+        public bool CreatePhotoPost(UserBasic author, string photoName, string postBody)
         {
             if (string.IsNullOrWhiteSpace(author.Username) || string.IsNullOrWhiteSpace(photoName))
             {
@@ -46,7 +46,7 @@ namespace BitBook.Manager.PostManager
                 Post aPost = new Post();
                 aPost._id = new ObjectId();
                 aPost.LikeCount = 0;
-                aPost.Caption = caption;
+                aPost.PostBody = postBody;
                 aPost.PostDate = DateTime.Now;
                 aPost.PostedBy._id = author._id;
                 aPost.PostedBy.ProfilePic = author.ProfilePic;

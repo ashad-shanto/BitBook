@@ -356,6 +356,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Images\PostPic\" />
     <Folder Include="Images\ProPic\" />
   </ItemGroup>
   <ItemGroup>

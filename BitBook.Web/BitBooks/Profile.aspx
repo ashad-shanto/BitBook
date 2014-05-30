@@ -61,12 +61,15 @@
         <div style="float:left; height:auto; width:70%;">
             <div style="width:80%; margin: 0 auto">
                 <textarea id="status" runat="server" placeholder="Insert your bits"></textarea>
-                <asp:Button ID="UserPost" runat="server" Text="Update Status" OnClick="UserPost_Click" />
+                <ccPiczardUC:SimpleImageUpload ID="PostPic" runat="server" />
+                <asp:Button ID="UserPost" runat="server" Text="Update Bit" OnClick="UserPost_Click" />
             </div>
             <ul>
             <asp:Repeater ID="UserPosts" runat="server">
                 <ItemTemplate>                    
-                    <li><a href="#"><asp:Label ID="Label1" runat="server" Text="Label"></asp:Label></a></li>
+                    <li>
+                        
+                    </li>
                 </ItemTemplate>
             </asp:Repeater> 
             </ul>           

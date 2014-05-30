@@ -9,25 +9,23 @@ using System.Web.UI.WebControls;
 using BitBook.Model;
 using CodeCarvings.Piczard;
 using MongoDB.Bson;
+using BitBook.Manager.PostManager;
 
 namespace BitBook.Web
 {
     public partial class Profile : System.Web.UI.Page
     {
-        public string id;
-
         protected void Page_Load(object sender, EventArgs e)
         {
-            if(Session["UserId"] != null)
+            if(Session["UserId"] != null && Request["user"] != null)
             {
-                id = Session["UserId"].ToString();
                 if (!this.IsPostBack)
                 {
                     this.Upload.AutoOpenImageEditPopupAfterUpload = true;
                     this.Upload.CropConstraint = new FixedCropConstraint(300, 300);
                     this.Upload.CropConstraint.DefaultImageSelectionStrategy = CropConstraintImageSelectionStrategy.WholeImage;
                     this.Upload.PreviewFilter = new FixedResizeConstraint(150, 150);
-                    ShowData();
+                    ShowData();                    
                 }
             }
             else
@@ -42,7 +40,7 @@ namespace BitBook.Web
             {
                 UserInformation info = new UserInformation();
                 User aUser = new User();
-                aUser = info.GetUserById(id);
+                aUser = info.GetUserById(Request["user"].ToString());
                 Name.Text = aUser.UserName;
                 Email.Text = aUser.Email;
                 Location.Text = aUser.UserCity + ", " + aUser.UserCountry;
@@ -76,7 +74,7 @@ namespace BitBook.Web
             {
                 UserInformation info = new UserInformation();
                 User aUser = new User();
-                aUser._id = new ObjectId(Session["UserId"].ToString());
+                aUser._id = new ObjectId(Request["user"].ToString());
                 aUser.UserName = txtName.Text;
                 aUser.Email = txtEmail.Text;
                 aUser.UserCity = txtCity.Text;
@@ -120,7 +118,24 @@ namespace BitBook.Web
 
         protected void UserPost_Click(object sender, EventArgs e)
         {
+            string imgsource = PostPic.SourceImageClientFileName;
+            string imgoutname = CodeCarvings.Piczard.Helpers.IOHelper.GetUniqueFileName("~/Images/PostPic/", imgsource);
+            string imgoutpath = CodeCarvings.Piczard.Helpers.IOHelper.GetUniqueFilePath("~/Images/PostPic/", imgsource);
+            PostPic.SaveProcessedImageToFileSystem(imgoutpath);
+            this.PostPic.SaveProcessedImageToFileSystem(imgoutpath, new JpegFormatEncoderParams(92));
+            UserInformation info = new UserInformation();
+            User aUser = new User();
+            aUser = info.GetUserById(Session["UserId"].ToString());
+            Post aPost = new Post();
+            aPost.PostBody = status.InnerText;
+            aPost.PhotoName = imgoutname;
+            aPost.PostedBy._id = aUser._id;
+            aPost.PostedBy.Username = aUser.UserName;
+            aPost.PostedBy.ProfilePic = aUser.ProfilePic;
+            aPost.PostDate = DateTime.Now;
 
+            PostManage manage = new PostManage();
+            manage.CreateTextPost(aPost);
         }
     }
 }

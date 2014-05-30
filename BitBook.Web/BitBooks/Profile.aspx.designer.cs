@@ -193,6 +193,15 @@ namespace BitBook.Web {
         protected global::System.Web.UI.HtmlControls.HtmlTextArea status;
         
         /// <summary>
+        /// PostPic control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::SimpleImageUpload PostPic;
+        
+        /// <summary>
         /// UserPost control.
         /// </summary>
         /// <remarks>
