@@ -29,15 +29,27 @@ namespace BitBook.Web
             try
             {
                 user = account.UserLogin(SignInEmailTextBox.Text.ToString(), SignInPasswordTextox.Text.ToString());
-                Session["UserId"] = user._id;
+                if(user == null)
+                {
+                    Alert.Text = "Invalid username or password!";
+                }
+                else
+                {
+                    Session["UserId"] = user._id;
+                }                
             }
             catch (Exception ex)
             {
                 //need to build this page
                 Response.Redirect("Error.aspx");
             }
-                Response.Redirect("~/BitBooks/Profile.aspx");
-           
+            finally
+            {
+                if(Session["UserId"] != null)
+                {
+                    Response.Redirect("~/BitBooks/Profile.aspx?user=" + user._id);
+                }
+            }
         }
 
         protected void SubmitButton_Click(object sender, EventArgs e)
@@ -55,7 +67,7 @@ namespace BitBook.Web
                 if (userId != new ObjectId("0"))
                 {
                     Session["UserId"] = userId;
-                    Response.Redirect("~/BitBooks/Profile.aspx");
+                    Response.Redirect("~/BitBooks/Profile.aspx?user=" + userId);
                 }
                 else
                 {

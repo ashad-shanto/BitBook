@@ -47,7 +47,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+<<<<<<< HEAD
+    <Compile Include="Comment.cs" />
     <Compile Include="Notification.cs" />
+=======
+>>>>>>> 92d8cef08c221722ee3180c935d388573350cbf2
     <Compile Include="Post.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="User.cs" />
