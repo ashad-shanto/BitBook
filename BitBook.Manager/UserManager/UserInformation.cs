@@ -165,7 +165,21 @@ namespace BitBook.Manager.UserManager
                 throw new Exception("Error"+ex);
             }
             return aUser;
-            
+        }
+        //Return true if both are friends
+        public bool CheckFriendship(ObjectId userId, ObjectId anotherId)
+        {
+            bool isFriend = false;
+            try
+            {
+                isFriend = repo.CheckFriendship(userId,anotherId);
+            }
+            catch (Exception ex)
+            {
+                
+                throw new Exception("Error"+ex);
+            }
+            return isFriend;
         }
     }
 }
