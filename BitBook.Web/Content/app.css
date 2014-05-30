@@ -1,9 +1,4 @@
-﻿/*#region master page */
-body {
-    margin-top: 0;
-}
-
-/*#region generic */
+﻿/*#region generic */
 body {
     background-color: rgba(230, 230, 230, 0.40);
 }
@@ -121,18 +116,3 @@ article {
 
 /*#endregion */
 /*#endregion */
-
-/*.my-button {
-    font-size: medium;
-    font-weight: 100;
-    color: #808080;
-    transition: color 0.5s ease-in;
-    background-color: rgba(128, 128, 128, 0.60);
-    border-radius: 3px;
-    transition: background-color 0.5s ease-out;
-}
-
-    .my-button:hover {
-        color: #fff;
-        background-color: rgba(128, 128, 128, 0.90);
-    }*/
