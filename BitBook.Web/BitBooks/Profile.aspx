@@ -71,13 +71,13 @@
                         <div style="width:10%; float:left">
                             <img src="../Images/ProPic/<%#Eval("PostedBy.ProfilePic") %>" style="width:50px; height:50px;" />
                         </div>
-                        <div style="width:80%; float:left">                            
+                        <div style="width:75%; float:left">                            
                             <a href='Profile.aspx?user=<%#Eval("PostedBy._id") %>'><%#Eval("PostedBy.Username") %></a> posted on <%#Eval("PostDate") %> 
                             <p><%#Eval("PostBody") %></p>
                             <img src="../Images/PostPic/<%#Eval("PhotoName") %>" alt="" style="width:80%" />
                         </div>
-                        <div style="width:10%; float:left">
-                            <asp:Button runat="server" ID="deleteBtn" Text="Delete" CommandArgument='<%#Eval("_id") %>' CommandName="Delete" Width="50px" />
+                        <div style="width:15%; float:left">
+                            <asp:Button runat="server" ID="deleteBtn" Text="Delete" CommandArgument='<%#Eval("_id") %>' CommandName="Delete" Width="80px" />
                         </div>
                     </li>
                 </ItemTemplate>

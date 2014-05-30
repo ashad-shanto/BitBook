@@ -164,8 +164,9 @@ namespace BitBook.Web
             Button delete = (Button)e.Item.FindControl("deleteBtn");
             if (e.CommandName == "Delete")
             {
-                Post aPost = new Post();
                 PostManage manage = new PostManage();
+                manage.RemovePost(new ObjectId(e.CommandArgument.ToString()));
+                ShowData();
             }
         }
     }
