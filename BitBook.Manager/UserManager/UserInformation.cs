@@ -60,5 +60,16 @@ namespace BitBook.Manager.UserManager
             }
             return updateDone;
         }
+        public bool UpdateProfilePic(string id, string photoName)
+        {
+            if(string.IsNullOrWhiteSpace(id) || string.IsNullOrWhiteSpace(photoName))
+            {
+                return false;
+            }
+            else
+            {
+                return repo.UpdateProfilePic(id, photoName);
+            }
+        }
     }
 }

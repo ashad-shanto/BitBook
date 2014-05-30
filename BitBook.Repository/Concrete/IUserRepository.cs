@@ -14,5 +14,6 @@ namespace BitBook.Repository.Concrete
         User GetById(ObjectId id);
         List<User> SearchUserByMatchingName(string nameChunk);
         bool UpdateUserInformation(User aUser);
+        bool UpdateProfilePic(string id, string photoName);
     }
 }

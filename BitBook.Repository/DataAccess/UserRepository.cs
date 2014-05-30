@@ -21,7 +21,7 @@ namespace BitBook.Repository.DataAccess
                       Query<User>.EQ(e => e.Email, email),
                       Query<User>.EQ(e => e.Password, userPass)
                   );
-                aUser = Collection.FindAs<User>(query).Single();
+                aUser = Collection.FindAs<User>(query).SetFields(Fields<User>.Exclude(u => u.Password)).Single();
             }
             catch (Exception ex)
             {
@@ -38,7 +38,7 @@ namespace BitBook.Repository.DataAccess
             try
             {
                 var query = Query<User>.EQ(e => e._id, id);
-                aUser = Collection.FindOne(query);
+                aUser = Collection.FindAs<User>(query).SetFields(Fields<User>.Exclude(u => u.Password)).Single();
             }
             catch (Exception ex)
             {
@@ -84,6 +84,23 @@ namespace BitBook.Repository.DataAccess
             }
             return modifySuccess;
             
+        }
+
+        public bool UpdateProfilePic(string id, string photoName)
+        {
+            bool modifySuccess = false;
+            ObjectId userId = new ObjectId(id);
+            try
+            {
+                var aUserData = Collection.FindAndModify(Query<User>.EQ(u => u._id, userId), SortBy<User>.Ascending(u => u.UserName), Update<User>.Set(u => u.ProfilePic, photoName), true);
+                if (aUserData != null)
+                    modifySuccess = true;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error modifying data" + ex);
+            }
+            return modifySuccess;
         }
     }
 }

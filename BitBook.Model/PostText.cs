@@ -8,11 +8,10 @@ using System.Threading.Tasks;
 
 namespace BitBook.Model
 {
-    public class UserBasic
+    public class PostText : Post
     {
         [BsonId]
-        public ObjectId _id { get; set; }
-        public string Username { get; set; }
-        public string ProfilePic { get; set; }
+        public string PostBody { get; set; }
     }
+        
 }
