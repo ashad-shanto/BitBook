@@ -8,5 +8,6 @@ namespace BitBook.Repository.Concrete
 {
     public interface IPost
     {
+
     }
 }

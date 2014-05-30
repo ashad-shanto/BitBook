@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace BitBook.Repository.DataAccess
 {
-    public class UserRepository : DataRepository<User> , IUserRepository
+    public class UserRepository : DataRepository<User>, IUserRepository
     {
         public User UserLogin(string email, string userPass)
         {
@@ -22,11 +22,11 @@ namespace BitBook.Repository.DataAccess
                       Query<User>.EQ(e => e.Password, userPass)
                   );
 
-                aUser = Collection.FindAs<User>(query).Single();
+
+                aUser = Collection.FindAs<User>(query).SetFields(Fields<User>.Exclude(u => u.Password)).SingleOrDefault();
             }
             catch (Exception ex)
             {
-
                 throw new Exception("Login error" + ex);
             }
             return aUser;
@@ -54,16 +54,16 @@ namespace BitBook.Repository.DataAccess
             List<User> allMatchingUsers = new List<User>();
             try
             {
-                if(!string.IsNullOrWhiteSpace(nameChunk))
+                if (!string.IsNullOrWhiteSpace(nameChunk))
                 {
                     nameChunk = string.Format("^{0}", nameChunk);
-                    allMatchingUsers = Collection.FindAs<User>( Query.Matches("MyField", new BsonRegularExpression(nameChunk, "i"))).SetFields(Fields<User>.Include(u => u.UserName, u => u.ProfilePic)).ToList();
+                    allMatchingUsers = Collection.FindAs<User>(Query.Matches("UserName", new BsonRegularExpression(nameChunk, "i"))).SetFields(Fields<User>.Include(u => u.UserName, u => u.ProfilePic)).ToList();
                 }
             }
             catch (Exception ex)
             {
-                
-                throw new Exception("Error getting users") ;
+
+                throw new Exception("Error getting users");
             }
             return allMatchingUsers;
         }
@@ -84,7 +84,7 @@ namespace BitBook.Repository.DataAccess
                 throw new Exception("Error modifying data" + ex);
             }
             return modifySuccess;
-            
+
         }
 
         public bool UpdateProfilePic(string id, string photoName)
@@ -120,5 +120,35 @@ namespace BitBook.Repository.DataAccess
             }
             return exist;
         }
+        public bool AddFriend(ObjectId userId, UserBasic friend)
+        {
+            bool addSuccess = false;
+            try
+            {
+                var query = Collection.Update(Query<User>.EQ(u => u._id, userId), Update<User>.AddToSet(u => u.Friends, friend));
+                addSuccess = true;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error adding data" + ex);
+            }
+            return addSuccess;
+        }
+        public bool RemoveFriend(ObjectId id, UserBasic friend)
+        {
+            bool removeSuccess = false;
+            try
+            {
+                var quer = Collection.Update(Query<User>.EQ(u => u._id, id), Update<User>.Pull(u => u.Friends, friend));
+                removeSuccess = true;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error removing data" + ex);
+            }
+            return removeSuccess;
+        }
+
     }
 }
+
