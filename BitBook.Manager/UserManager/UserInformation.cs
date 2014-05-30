@@ -71,5 +71,10 @@ namespace BitBook.Manager.UserManager
                 return repo.UpdateProfilePic(id, photoName);
             }
         }
+
+        public bool UserExists(ObjectId userId)
+        {
+            return repo.CheckUserExist(userId);
+        }
     }
 }

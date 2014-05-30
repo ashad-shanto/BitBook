@@ -45,9 +45,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Concrete\IPost.cs" />
     <Compile Include="Concrete\IRepository.cs" />
     <Compile Include="Concrete\IUserRepository.cs" />
     <Compile Include="DataAccess\DataRepository.cs" />
+    <Compile Include="DataAccess\PostRepository.cs" />
     <Compile Include="DataAccess\UserRepository.cs" />
     <Compile Include="DbContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

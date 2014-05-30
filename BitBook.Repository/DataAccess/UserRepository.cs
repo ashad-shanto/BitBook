@@ -21,7 +21,7 @@ namespace BitBook.Repository.DataAccess
                       Query<User>.EQ(e => e.Email, email),
                       Query<User>.EQ(e => e.Password, userPass)
                   );
-                aUser = Collection.FindAs<User>(query).SetFields(Fields<User>.Exclude(u => u.Password)).Single();
+                aUser = Collection.FindAs<User>(query).SetFields(Fields<User>.Exclude(u => u.Password)).SingleOrDefault();
             }
             catch (Exception ex)
             {
@@ -38,7 +38,7 @@ namespace BitBook.Repository.DataAccess
             try
             {
                 var query = Query<User>.EQ(e => e._id, id);
-                aUser = Collection.FindAs<User>(query).SetFields(Fields<User>.Exclude(u => u.Password)).Single();
+                aUser = Collection.FindAs<User>(query).SetFields(Fields<User>.Exclude(u => u.Password)).SingleOrDefault();
             }
             catch (Exception ex)
             {
@@ -101,6 +101,23 @@ namespace BitBook.Repository.DataAccess
                 throw new Exception("Error modifying data" + ex);
             }
             return modifySuccess;
+        }
+
+
+        public bool CheckUserExist(ObjectId id)
+        {
+            bool exist = false;
+            try
+            {
+                int result = (int)Collection.FindAs<User>(Query<User>.EQ(u => u._id, id)).Count();
+                if (result > 0)
+                    exist = true;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error checking data" + ex);
+            }
+            return exist;
         }
     }
 }

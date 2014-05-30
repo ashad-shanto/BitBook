@@ -45,6 +45,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="PostManager\PostManage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UserManager\UserAccount.cs" />
     <Compile Include="UserManager\UserInformation.cs" />
