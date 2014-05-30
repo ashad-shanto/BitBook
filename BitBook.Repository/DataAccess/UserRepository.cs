@@ -176,10 +176,28 @@ namespace BitBook.Repository.DataAccess
         }
 
 
-
+        //Return true if both are friends
         public bool CheckFriendship(ObjectId userId, ObjectId anotherUserId)
         {
-            throw new NotImplementedException();
+            int result = 0;
+            try
+            {
+                var query = Query.And(
+                      Query.EQ("_id", userId),
+                      Query.EQ("Friends._id", anotherUserId)
+                  );
+
+                result = (int)Collection.Find(query).Count();
+                if (result > 0)
+                    return true;
+                
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error checking friendship");
+            }
+            return false;
+            
         }
     }
 }

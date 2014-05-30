@@ -40,5 +40,16 @@ namespace BitBook.Manager.PostManager
             }
             return allPost;
         }
+        public bool RemovePost(ObjectId postId)
+        {
+            try
+            {
+                return RemovePost(postId);
+            }
+            catch(Exception ex)
+            {
+                throw new Exception("Error removing post" + ex);
+            }
+        }
     }
 }

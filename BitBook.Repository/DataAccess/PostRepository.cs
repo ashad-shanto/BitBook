@@ -27,5 +27,43 @@ namespace BitBook.Repository.DataAccess
             }
             return allPost;
         }
+        public bool LikePost(ObjectId postId, ObjectId likerId)
+        {
+            bool done = false;
+            UserBasic liker = new UserBasic() {_id = likerId };
+            try
+            {
+                var query = Collection.Update(Query<Post>.EQ(u => u._id, postId), Update<Post>.AddToSet(u => u.Likers, liker)
+                                                                                              .Inc(u => u.LikeCount, 1));
+                done = true;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error in like process" + ex);
+            }
+            return done;
+        }
+        public bool RemovePost(ObjectId postId)
+        {
+            try
+            {
+                var result = Collection.Remove(Query<Post>.EQ(p => p._id, postId), MongoDB.Driver.RemoveFlags.Single);
+                if ((int)result.DocumentsAffected > 0)
+                {
+                    return true;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error removing post" + ex);
+            }
+            return false;
+        }
+
+
+        public bool LikePost(ObjectId likerId)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
