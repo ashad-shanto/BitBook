@@ -19,6 +19,10 @@ namespace BitBook.Web
         {
             if(Session["UserId"] != null && Request["user"] != null)
             {
+                if (Session["UserId"].ToString() != Request["user"].ToString())
+                {
+                    ImageButton.Visible = false; Update.Visible = false; stausField.Visible = false;
+                }
                 if (!this.IsPostBack)
                 {
                     this.Upload.AutoOpenImageEditPopupAfterUpload = true;
@@ -48,6 +52,13 @@ namespace BitBook.Web
                 {
                     Image1.ImageUrl = "~/Images/Propic/" + aUser.ProfilePic;
                 }
+                
+                List<Post> posts = new List<Post>();
+                PostManage postMng = new PostManage();
+                posts = postMng.GetAllByUserId(new ObjectId(Request["user"].ToString()));
+
+                UserPosts.DataSource = posts;
+                UserPosts.DataBind();
             }
             catch(Exception ex)
             {
@@ -118,11 +129,19 @@ namespace BitBook.Web
 
         protected void UserPost_Click(object sender, EventArgs e)
         {
-            string imgsource = PostPic.SourceImageClientFileName;
-            string imgoutname = CodeCarvings.Piczard.Helpers.IOHelper.GetUniqueFileName("~/Images/PostPic/", imgsource);
-            string imgoutpath = CodeCarvings.Piczard.Helpers.IOHelper.GetUniqueFilePath("~/Images/PostPic/", imgsource);
-            PostPic.SaveProcessedImageToFileSystem(imgoutpath);
-            this.PostPic.SaveProcessedImageToFileSystem(imgoutpath, new JpegFormatEncoderParams(92));
+            string imgoutname;
+            if(PostPic.HasImage == true)
+            {
+                string imgsource = PostPic.SourceImageClientFileName;
+                imgoutname = CodeCarvings.Piczard.Helpers.IOHelper.GetUniqueFileName("~/Images/PostPic/", imgsource);
+                string imgoutpath = CodeCarvings.Piczard.Helpers.IOHelper.GetUniqueFilePath("~/Images/PostPic/", imgsource);
+                PostPic.SaveProcessedImageToFileSystem(imgoutpath);
+                this.PostPic.SaveProcessedImageToFileSystem(imgoutpath, new JpegFormatEncoderParams(92));
+            }
+            else
+            {
+                imgoutname = null;
+            }
             UserInformation info = new UserInformation();
             User aUser = new User();
             aUser = info.GetUserById(Session["UserId"].ToString());
@@ -136,6 +155,18 @@ namespace BitBook.Web
 
             PostManage manage = new PostManage();
             manage.CreateTextPost(aPost);
+            status.InnerText = "";
+            ShowData();
+        }
+
+        protected void UserPosts_ItemCommand(object source, RepeaterCommandEventArgs e)
+        {
+            Button delete = (Button)e.Item.FindControl("deleteBtn");
+            if (e.CommandName == "Delete")
+            {
+                Post aPost = new Post();
+                PostManage manage = new PostManage();
+            }
         }
     }
 }

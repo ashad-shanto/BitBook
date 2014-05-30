@@ -72,11 +72,23 @@ namespace BitBook.Manager.UserManager
             }
         }
 
+        //Return True if user exist
         public bool UserExists(ObjectId userId)
         {
             return repo.CheckUserExist(userId);
         }
-
+        //Return True if email is already in use
+        public bool CheckEmailValidity(string email)
+        {
+            if(!string.IsNullOrWhiteSpace(email))
+            {
+                return repo.CheckEmailValidity(email);
+            }
+            else
+            {
+                return false;
+            }
+        }
         public List<User> SearchUserByMatchingName(string nameChunk)
         {
             List<User> allMatchedUser = new List<User>();

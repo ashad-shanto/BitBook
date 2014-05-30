@@ -59,16 +59,26 @@
             </ul>
         </div>
         <div style="float:left; height:auto; width:70%;">
-            <div style="width:80%; margin: 0 auto">
+            <div style="width:80%; margin: 0 auto" runat="server" id="stausField">
                 <textarea id="status" runat="server" placeholder="Insert your bits"></textarea>
                 <ccPiczardUC:SimpleImageUpload ID="PostPic" runat="server" />
                 <asp:Button ID="UserPost" runat="server" Text="Update Bit" OnClick="UserPost_Click" />
             </div>
-            <ul>
-            <asp:Repeater ID="UserPosts" runat="server">
+            <ul style="list-style-type:none; margin:0 auto; width:80%">
+            <asp:Repeater ID="UserPosts" runat="server" OnItemCommand="UserPosts_ItemCommand">
                 <ItemTemplate>                    
                     <li>
-                        
+                        <div style="width:10%; float:left">
+                            <img src="../Images/ProPic/<%#Eval("PostedBy.ProfilePic") %>" style="width:50px; height:50px;" />
+                        </div>
+                        <div style="width:80%; float:left">                            
+                            <a href='Profile.aspx?user=<%#Eval("PostedBy._id") %>'><%#Eval("PostedBy.Username") %></a> posted on <%#Eval("PostDate") %> 
+                            <p><%#Eval("PostBody") %></p>
+                            <img src="../Images/PostPic/<%#Eval("PhotoName") %>" alt="" style="width:80%" />
+                        </div>
+                        <div style="width:10%; float:left">
+                            <asp:Button runat="server" ID="deleteBtn" Text="Delete" CommandArgument='<%#Eval("_id") %>' CommandName="Delete" Width="50px" />
+                        </div>
                     </li>
                 </ItemTemplate>
             </asp:Repeater> 
