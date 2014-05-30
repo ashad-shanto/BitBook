@@ -16,44 +16,29 @@ namespace BitBook.Manager.PostManager
         {
             repo = new PostRepository();
         }
-        public bool CreateTextPost(UserBasic author, string postBody)
+        public bool CreateTextPost(Post aPost)
         {
-            if(string.IsNullOrWhiteSpace(author.Username) || string.IsNullOrWhiteSpace(postBody))
+            if(string.IsNullOrWhiteSpace(aPost.PostedBy.Username) || string.IsNullOrWhiteSpace(aPost.PostBody))
             {
                 return false;
             }
             else
             {
-                Post aPost = new Post();
-                aPost._id = new ObjectId();
-                aPost.LikeCount = 0;
-                aPost.PostBody = postBody;
-                aPost.PostDate = DateTime.Now;
-                aPost.PostedBy._id = author._id;
-                aPost.PostedBy.ProfilePic = author.ProfilePic;
-                aPost.PostedBy.Username = author.Username;
                 return repo.Add(aPost);
             }
         }
-        public bool CreatePhotoPost(UserBasic author, string photoName, string caption)
+        public List<Post> GetAllByUserId(ObjectId userId)
         {
-            if (string.IsNullOrWhiteSpace(author.Username) || string.IsNullOrWhiteSpace(photoName))
+            List<Post> allPost = new List<Post>();
+            try
             {
-                return false;
+                allPost = repo.GetAllByUserId(userId);
             }
-            else
+            catch (Exception ex)
             {
-                Post aPost = new Post();
-                aPost._id = new ObjectId();
-                aPost.LikeCount = 0;
-                aPost.Caption = caption;
-                aPost.PostDate = DateTime.Now;
-                aPost.PostedBy._id = author._id;
-                aPost.PostedBy.ProfilePic = author.ProfilePic;
-                aPost.PostedBy.Username = author.Username;
-                aPost.PhotoName = photoName;
-                return repo.Add(aPost);
+                throw new Exception("Error fetching post" + ex);
             }
+            return allPost;
         }
     }
 }

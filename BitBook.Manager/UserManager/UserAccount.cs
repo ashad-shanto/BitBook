@@ -77,11 +77,20 @@ namespace BitBook.Manager.UserManager
             }
             return aUser;
         }
+        //Return true is mail id is valid
         private bool IsValidMailAddress(string email)
         {
             Regex mailRegx = new Regex(@"^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$");
             bool valid = false;
-            valid = mailRegx.IsMatch(email);
+            try
+            {
+                valid = mailRegx.IsMatch(email);
+            }
+            catch (Exception)
+            {
+                throw new Exception("Error checking email structure");
+            }
+            
             return valid;
         }
     }

@@ -21,9 +21,7 @@ namespace BitBook.Repository.DataAccess
                       Query<User>.EQ(e => e.Email, email),
                       Query<User>.EQ(e => e.Password, userPass)
                   );
-
-
-                aUser = Collection.FindAs<User>(query).SetFields(Fields<User>.Exclude(u => u.Password)).SingleOrDefault();
+                aUser = Collection.FindAs<User>(query).SetFields(Fields<User>.Exclude(u => u.Password)).FirstOrDefault();
             }
             catch (Exception ex)
             {
@@ -31,15 +29,13 @@ namespace BitBook.Repository.DataAccess
             }
             return aUser;
         }
-
-
         public User GetById(ObjectId id)
         {
             User aUser = new User();
             try
             {
                 var query = Query<User>.EQ(e => e._id, id);
-                aUser = Collection.FindAs<User>(query).SetFields(Fields<User>.Exclude(u => u.Password)).SingleOrDefault();
+                aUser = Collection.FindAs<User>(query).SetFields(Fields<User>.Exclude(u => u.Password)).FirstOrDefault();
             }
             catch (Exception ex)
             {
@@ -47,7 +43,6 @@ namespace BitBook.Repository.DataAccess
             }
             return aUser;
         }
-
 
         public List<User> SearchUserByMatchingName(string nameChunk)
         {
@@ -148,7 +143,29 @@ namespace BitBook.Repository.DataAccess
             }
             return removeSuccess;
         }
+        //Return true if email is already in use
+        public bool CheckEmailValidity(string email)
+        {
+            bool exist = false;
+            try
+            {
+                int result = (int)Collection.FindAs<User>(Query<User>.EQ(u => u.Email, email)).Count();
+                if (result > 0)
+                    exist = true;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error checking data" + ex);
+            }
+            return exist;
+        }
 
+
+
+        public bool CheckFriendship(ObjectId userId, ObjectId anotherUserId)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
 

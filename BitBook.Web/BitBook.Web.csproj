@@ -134,7 +134,6 @@
     <Content Include="About.aspx" />
     <Content Include="Account\OpenAuthProviders.ascx" />
     <Content Include="Account\RegisterExternalLogin.aspx" />
-    <Content Include="Account\Registration.aspx" />
     <Content Include="Contact.aspx" />
     <Content Include="Content\app.css" />
     <Content Include="Content\foundation\css\foundation.css" />
@@ -277,13 +276,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Account\Registration.aspx.cs">
-      <DependentUpon>Registration.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Account\Registration.aspx.designer.cs">
-      <DependentUpon>Registration.aspx</DependentUpon>
-    </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\AuthConfig.cs" />
     <Compile Include="About.aspx.cs">
