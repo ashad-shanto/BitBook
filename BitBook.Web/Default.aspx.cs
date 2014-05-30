@@ -1,4 +1,4 @@
-﻿using BitBook.Manager.UserManager;
+using BitBook.Manager.UserManager;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using BitBook.Model;
+using MongoDB.Bson;
 
 namespace BitBook.Web
 {
@@ -16,10 +17,10 @@ namespace BitBook.Web
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            //if (!IsPostBack)
-            //{
-            //    Clear();
-            //}
+            if (!IsPostBack)
+            {
+                Clear();
+            }
         }
 
         protected void LoginButton_Click(object sender, EventArgs e)
@@ -29,36 +30,48 @@ namespace BitBook.Web
             {
                 user = account.UserLogin(SignInEmailTextBox.Text.ToString(), SignInPasswordTextox.Text.ToString());
                 Session["UserId"] = user._id;
-                //need to build this page
-                
             }
             catch (Exception ex)
             {
                 //need to build this page
                 Response.Redirect("Error.aspx");
             }
-            Response.Redirect("Profile.aspx");
+                Response.Redirect("~/BitBooks/Profile.aspx");
+           
         }
 
         protected void SubmitButton_Click(object sender, EventArgs e)
         {
             try
             {
+                ObjectId userId = new ObjectId();
                 user = new User();
                 user.UserName = SignUpUserNameTextBox.Text;
                 user.Email = SignUpEmailTextBox.Text;
                 user.Password = SignUpPasswordTextBox.Text;
 
                 account = new UserAccount();
-                account.UserRegistration(user);
-
+                userId = account.UserRegistration(user);
+                if (userId != new ObjectId("0"))
+                {
+                    Session["UserId"] = userId;
+                    Response.Redirect("~/BitBooks/Profile.aspx");
+                }
+                else
+                {
+                    Response.Redirect("Error.aspx");
+                }
+                
                 //redirect to login page
-
             }
             catch (Exception ex)
             {
                 //add error page
                 Response.Redirect("");
+            }
+            finally
+            {
+                
             }
         }
 

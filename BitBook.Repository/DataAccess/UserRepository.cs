@@ -21,9 +21,7 @@ namespace BitBook.Repository.DataAccess
                       Query<User>.EQ(e => e.Email, email),
                       Query<User>.EQ(e => e.Password, userPass)
                   );
-
-
-                aUser = Collection.FindAs<User>(query).SetFields(Fields<User>.Exclude(u => u.Password)).SingleOrDefault();
+                aUser = Collection.FindAs<User>(query).SetFields(Fields<User>.Exclude(u => u.Password)).FirstOrDefault();
             }
             catch (Exception ex)
             {
@@ -104,6 +102,21 @@ namespace BitBook.Repository.DataAccess
             return modifySuccess;
         }
 
+
+        public ObjectId AddUser(User aUser)
+        {
+            try
+            {
+                Collection.Insert(aUser);
+                return aUser._id;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+        }
 
         public bool CheckUserExist(ObjectId id)
         {

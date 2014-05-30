@@ -1,12 +1,12 @@
 ﻿<%@ Page Title="Home Page" EnableEventValidation="false" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="BitBook.Web._Default" %>
 
 <asp:Content runat="server" ID="Head" ContentPlaceHolderID="HeadContent">
-    <script src="Scripts/jquery-1.8.2.js"></script>
-    <script type="text/javascript">
+    <script src="Scripts/jquery-2.1.0.min.js"></script>
+    <%--<script type="text/javascript">
         $(document).ready(function () {
             $("#SearchBarTextBox").hide();
         });
-    </script>
+    </script>--%>
 </asp:Content>
 <asp:Content runat="server" ID="BodyContent" ContentPlaceHolderID="MainContent">
 

@@ -14,6 +14,48 @@
     <asp:PlaceHolder runat="server">
         <%: Scripts.Render("~/bundles/modernizr") %>
     </asp:PlaceHolder>
+    <script src="Scripts/jquery-2.1.1.js"></script>
+    <script src="Scripts/jquery-ui-1.10.4.js"></script>
+
+    <%--<asp:PlaceHolder runat="server" ID="searchText">
+        <script type="text/javascript">
+            $(function () {
+                $(document).ready(function () {
+                    SearchText();
+
+                    function SearchText() {
+                        $("#<%=SearchBarTextBox.ClientID %>").autocomplete({
+                            source: function (request, response) {
+                                $.ajax({
+                                    url: "UserInfoService.asmx/GetAllUsers",
+                                    type: "POST",
+                                    dataType: "json",
+                                    contentType: "application/json; charset=utf-8",
+                                    data: "{ 'txt' : '" + $("#<%=SearchBarTextBox.ClientID %>").val() + "' }",
+                                    dataFilter: function (data) { return data; },
+                                    success: function (data) {
+                                        response($.map(data.d, function (item) {
+                                            return {
+                                                label: item,
+                                                value: item
+                                            }
+                                        }))
+                                    },
+
+                                    error: function (result) {
+                                        alert("Error Occured!!");
+                                    }
+                                });
+                            },
+                            minLength: 1,
+                            delay: 10
+                        });
+                    }
+                });
+            })
+        </script>
+    </asp:PlaceHolder>--%>
+    
     <webopt:BundleReference runat="server" Path="~/Content/css" />
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
     <meta name="viewport" content="width=device-width" />
@@ -40,8 +82,8 @@
                 <%--Framework Scripts--%>
 
                 <asp:ScriptReference Name="MsAjaxBundle" />
-                <asp:ScriptReference Name="jquery" />
-                <asp:ScriptReference Name="jquery.ui.combined" />
+                <asp:ScriptReference Name="jquery" Path="~/Scripts/jquery-2.1.1.js" />
+                <asp:ScriptReference Name="jquery.ui.combined" Path="~/Scripts/jquery-ui-1.10.4.js" />
                 <asp:ScriptReference Name="WebForms.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebForms.js" />
                 <asp:ScriptReference Name="WebUIValidation.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebUIValidation.js" />
                 <asp:ScriptReference Name="MenuStandards.js" Assembly="System.Web" Path="~/Scripts/WebForms/MenuStandards.js" />
@@ -73,28 +115,16 @@
                             <li class="search ">
 
                                 <%--<input type="search" placeholder="Look for friends and people." />--%>
-                                <asp:TextBox ID="SearchBarTextBox" runat="server" placeholder="Look for friends and people baby" />
+                                <%--<asp:TextBox ID="SearchBarTextBox" runat="server" placeholder="Look for friends and people baby" />--%>
                             </li>
                         </ul>
                     </section>
                 </div>
                 <div class="large-4 columns account-panel">
-                    <asp:LoginView runat="server" ViewStateMode="Disabled">
-                        <AnonymousTemplate>
-                            <ul class="top-nav inline-list">
-                                <li class="top-nav-element"><a id="registerLink" runat="server" href="~/Account/Register">Register</a></li>
-                                <li class="top-nav-element"><a id="loginLink" runat="server" href="~/Account/Login">Log in</a></li>
-                            </ul>
-                        </AnonymousTemplate>
-                        <LoggedInTemplate>
-                            <p>
-                                <a runat="server" class="username" href="~/Account/Manage" title="Manage your account">
-                                    <asp:LoginName runat="server" CssClass="username" />
-                                </a>
-                                <asp:LoginStatus runat="server" LogoutAction="Redirect" LogoutText="Log off" LogoutPageUrl="~/" />
-                            </p>
-                        </LoggedInTemplate>
-                    </asp:LoginView>
+                    <asp:Panel ID="LogPanel" runat="server">
+                    <asp:Label ID="Label1" runat="server"></asp:Label> | 
+                    <a href="Default.aspx" runat="server" onclick="Logout">Logout</a>
+                    </asp:Panel>
                 </div>
             </nav>
         </header>

@@ -124,3 +124,18 @@ article {
     top: -0.8rem;
     font-size: smaller;
 }
+
+
+/* searchList Style */
+ul#ui-id-1 {
+    background-color : #ddd;
+    width : 150px;
+    padding : 5px 0px 0px 10px;
+}
+
+    #ui-id-1 li {
+        height : 30px;
+        padding-bottom : 5px;
+        list-style : none;
+        font-weight : bolder;
+    }

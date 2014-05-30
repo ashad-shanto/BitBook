@@ -1,4 +1,6 @@
-﻿using System;
+﻿using BitBook.Manager.UserManager;
+using BitBook.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -67,7 +69,23 @@ namespace BitBook.Web
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            if(Session["UserId"] == null)
+            {
+                LogPanel.Visible = false;
+            }
+            else
+            {
+                UserInformation info = new UserInformation();
+                User aUser = new User();
+                aUser = info.GetUserById(Session["UserId"].ToString());
+                Label1.Text = aUser.UserName;
+            }
+        }
 
+        protected void logout(object sender, EventArgs e)
+        {
+            Response.Redirect("Default.aspx");
+            Session["UserId"] = String.Empty;
         }
     }
 }
