@@ -149,6 +149,7 @@ namespace BitBook.Repository.DataAccess
             bool removeSuccess = false;
             try
             {
+               
                 var quer = Collection.Update(Query<User>.EQ(u => u._id, id), Update<User>.Pull(u => u.Friends, friend));
                 removeSuccess = true;
             }
