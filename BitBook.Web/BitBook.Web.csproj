@@ -38,7 +38,16 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CodeCarvings.Piczard">
+      <HintPath>..\packages\CodeCarvings.Piczard.1.2.3.3\lib\CodeCarvings.Piczard.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="MongoDB.Bson">
+      <HintPath>..\packages\mongocsharpdriver.1.9.1\lib\net35\MongoDB.Bson.dll</HintPath>
+    </Reference>
+    <Reference Include="MongoDB.Driver">
+      <HintPath>..\packages\mongocsharpdriver.1.9.1\lib\net35\MongoDB.Driver.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.Entity" />
@@ -187,8 +196,10 @@
     <Content Include="Content\themes\base\minified\jquery.ui.slider.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.tabs.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
+    <Content Include="Home.aspx" />
     <Content Include="Images\accent.png" />
     <Content Include="Images\bullet.png" />
+    <Content Include="Images\default.png" />
     <Content Include="Images\heroAccent.png" />
     <Content Include="Images\orderedList0.png" />
     <Content Include="Images\orderedList1.png" />
@@ -204,7 +215,16 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="packages.config" />
+    <Content Include="App_Data\__CCPZTF_78d3a7c598904cd48d0447186ad55482__wt.tmp" />
+    <Content Include="piczardUserControls\simpleImageUploadUserControl\blank.gif" />
+    <Content Include="piczardUserControls\simpleImageUploadUserControl\preview.ashx" />
+    <Content Include="piczardUserControls\simpleImageUploadUserControl\uploadMonitor.ashx" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
+    <Content Include="BitBooks\Profile.aspx" />
+    <Content Include="piczardUserControls\simpleImageUploadUserControl\SimpleImageUpload.ascx" />
+    <Content Include="piczardUserControls\simpleImageUploadUserControl\simpleImageUpload.js" />
+    <Content Include="piczardUserControls\simpleImageUploadUserControl\upload.aspx" />
+    <Content Include="piczardUserControls\simpleImageUploadUserControl\wait.gif" />
     <Content Include="Scripts\jquery-1.8.2.js" />
     <Content Include="Scripts\jquery-1.8.2.min.js" />
     <Content Include="Scripts\jquery-ui-1.8.24.js" />
@@ -308,6 +328,34 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="BitBooks\Profile.aspx.cs">
+      <DependentUpon>Profile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BitBooks\Profile.aspx.designer.cs">
+      <DependentUpon>Profile.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Home.aspx.cs">
+      <DependentUpon>Home.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Home.aspx.designer.cs">
+      <DependentUpon>Home.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="piczardUserControls\simpleImageUploadUserControl\SimpleImageUpload.ascx.cs">
+      <DependentUpon>SimpleImageUpload.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="piczardUserControls\simpleImageUploadUserControl\SimpleImageUpload.ascx.designer.cs">
+      <DependentUpon>SimpleImageUpload.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="piczardUserControls\simpleImageUploadUserControl\upload.aspx.cs">
+      <DependentUpon>upload.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="piczardUserControls\simpleImageUploadUserControl\upload.aspx.designer.cs">
+      <DependentUpon>upload.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
@@ -318,23 +366,35 @@
     </Compile>
     <Compile Include="Site.Mobile.Master.cs">
       <DependentUpon>Site.Mobile.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Site.Mobile.Master.designer.cs">
       <DependentUpon>Site.Mobile.Master</DependentUpon>
     </Compile>
     <Compile Include="ViewSwitcher.ascx.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="ViewSwitcher.ascx.designer.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
+    <Folder Include="Images\ProPic\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Account\Web.config" />
     <Content Include="Site.Master" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BitBook.Manager\BitBook.Manager.csproj">
+      <Project>{e694d826-405f-4ea8-a2d5-334c8e5619d9}</Project>
+      <Name>BitBook.Manager</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BitBook.Model\BitBook.Model.csproj">
+      <Project>{e97a182e-f8e4-4fa6-94c5-968c1b7c8b01}</Project>
+      <Name>BitBook.Model</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

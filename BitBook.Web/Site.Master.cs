@@ -1,4 +1,6 @@
-﻿using System;
+﻿using BitBook.Manager.UserManager;
+using BitBook.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -67,7 +69,7 @@ namespace BitBook.Web
 
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            
         }
     }
 }
