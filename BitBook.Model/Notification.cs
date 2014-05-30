@@ -15,5 +15,9 @@ namespace BitBook.Model
         public ObjectId NotificationFor { get; set; }
         public int Status { get; set; }
         public UserBasic Friend { get; set; }
+        public Notification()
+        {
+            Friend = new UserBasic();
+        }
     }
 }

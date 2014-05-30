@@ -63,5 +63,16 @@ namespace BitBook.Manager.PostManager
                 throw new Exception("Error removing post" + ex);
             }
         }
+        public bool UnLikePost(ObjectId postId, ObjectId likerId)
+        {
+            try
+            {
+                return repo.UnLikePost(postId,likerId);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error removing post" + ex);
+            }
+        }
     }
 }
