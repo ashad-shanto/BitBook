@@ -59,12 +59,12 @@
             </ul>
         </div>
         <div style="float:left; height:auto; width:70%;">
-            <div style="width:80%; margin: 0 auto" runat="server" id="stausField">
+            <div style="width:80%; margin-left:50px;" runat="server" id="stausField">
                 <textarea id="status" runat="server" placeholder="Insert your bits"></textarea>
                 <ccPiczardUC:SimpleImageUpload ID="PostPic" runat="server" />
                 <asp:Button ID="UserPost" runat="server" Text="Update Bit" OnClick="UserPost_Click" />
             </div>
-            <ul style="list-style-type:none; margin:0 auto; width:80%">
+            <ul style="list-style-type:none; margin-left:50px; width:80%">
             <asp:Repeater ID="UserPosts" runat="server" OnItemCommand="UserPosts_ItemCommand">
                 <ItemTemplate>                    
                     <li>
