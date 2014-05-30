@@ -18,17 +18,21 @@ namespace BitBook.Web.Account
 
         protected void SubmitButton_Click(object sender, EventArgs e)
         {
-            User newUser = new User();
-            newUser.UserName = UserNameTextBox.Text;
-            newUser.Email = EmailTextBox.Text;
-            newUser.Password = PasswordTextBox.Text;
+            try {
+                User newUser = new User();
+                newUser.UserName = UserNameTextBox.Text;
+                newUser.Email = EmailTextBox.Text;
+                newUser.Password = PasswordTextBox.Text;
 
-            UserAccount account = new UserAccount();
-            account.UserRegistration(newUser);
+                UserAccount account = new UserAccount();
+                account.UserRegistration(newUser);
 
+                //redirect to login page
 
-
-            //redirect user from here
+            } catch(Exception ex){
+                //add error page
+                Response.Redirect("");
+            }
         }
 
         private void Clear() 
