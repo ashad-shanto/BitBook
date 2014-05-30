@@ -44,7 +44,7 @@ namespace BitBook.Manager.PostManager
         {
             try
             {
-                return RemovePost(postId);
+                return repo.RemovePost(postId);
             }
             catch(Exception ex)
             {
