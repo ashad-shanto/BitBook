@@ -38,6 +38,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CodeCarvings.Piczard">
+      <HintPath>..\packages\CodeCarvings.Piczard.1.2.3.3\lib\CodeCarvings.Piczard.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="MongoDB.Bson">
       <HintPath>..\packages\mongocsharpdriver.1.9.1\lib\net35\MongoDB.Bson.dll</HintPath>
@@ -135,33 +138,6 @@
     <Content Include="Account\OpenAuthProviders.ascx" />
     <Content Include="Account\RegisterExternalLogin.aspx" />
     <Content Include="Contact.aspx" />
-    <Content Include="Content\app.css" />
-    <Content Include="Content\foundation\css\foundation.css" />
-    <Content Include="Content\foundation\css\foundation.min.css" />
-    <Content Include="Content\foundation\css\normalize.css" />
-    <Content Include="Content\foundation\js\foundation.min.js" />
-    <Content Include="Content\foundation\js\foundation\foundation.abide.js" />
-    <Content Include="Content\foundation\js\foundation\foundation.accordion.js" />
-    <Content Include="Content\foundation\js\foundation\foundation.alert.js" />
-    <Content Include="Content\foundation\js\foundation\foundation.clearing.js" />
-    <Content Include="Content\foundation\js\foundation\foundation.dropdown.js" />
-    <Content Include="Content\foundation\js\foundation\foundation.equalizer.js" />
-    <Content Include="Content\foundation\js\foundation\foundation.interchange.js" />
-    <Content Include="Content\foundation\js\foundation\foundation.joyride.js" />
-    <Content Include="Content\foundation\js\foundation\foundation.js" />
-    <Content Include="Content\foundation\js\foundation\foundation.magellan.js" />
-    <Content Include="Content\foundation\js\foundation\foundation.offcanvas.js" />
-    <Content Include="Content\foundation\js\foundation\foundation.orbit.js" />
-    <Content Include="Content\foundation\js\foundation\foundation.reveal.js" />
-    <Content Include="Content\foundation\js\foundation\foundation.tab.js" />
-    <Content Include="Content\foundation\js\foundation\foundation.tooltip.js" />
-    <Content Include="Content\foundation\js\foundation\foundation.topbar.js" />
-    <Content Include="Content\foundation\js\foundation\jquery.cookie.js" />
-    <Content Include="Content\foundation\js\vendor\fastclick.js" />
-    <Content Include="Content\foundation\js\vendor\jquery.cookie.js" />
-    <Content Include="Content\foundation\js\vendor\jquery.js" />
-    <Content Include="Content\foundation\js\vendor\modernizr.js" />
-    <Content Include="Content\foundation\js\vendor\placeholder.js" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
@@ -217,8 +193,10 @@
     <Content Include="Content\themes\base\minified\jquery.ui.slider.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.tabs.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
+    <Content Include="Home.aspx" />
     <Content Include="Images\accent.png" />
     <Content Include="Images\bullet.png" />
+    <Content Include="Images\default.png" />
     <Content Include="Images\heroAccent.png" />
     <Content Include="Images\orderedList0.png" />
     <Content Include="Images\orderedList1.png" />
@@ -234,7 +212,16 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="packages.config" />
+    <Content Include="App_Data\__CCPZTF_78d3a7c598904cd48d0447186ad55482__wt.tmp" />
+    <Content Include="piczardUserControls\simpleImageUploadUserControl\blank.gif" />
+    <Content Include="piczardUserControls\simpleImageUploadUserControl\preview.ashx" />
+    <Content Include="piczardUserControls\simpleImageUploadUserControl\uploadMonitor.ashx" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
+    <Content Include="BitBooks\Profile.aspx" />
+    <Content Include="piczardUserControls\simpleImageUploadUserControl\SimpleImageUpload.ascx" />
+    <Content Include="piczardUserControls\simpleImageUploadUserControl\simpleImageUpload.js" />
+    <Content Include="piczardUserControls\simpleImageUploadUserControl\upload.aspx" />
+    <Content Include="piczardUserControls\simpleImageUploadUserControl\wait.gif" />
     <Content Include="Scripts\jquery-1.8.2.js" />
     <Content Include="Scripts\jquery-1.8.2.min.js" />
     <Content Include="Scripts\jquery-ui-1.8.24.js" />
@@ -317,6 +304,34 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="BitBooks\Profile.aspx.cs">
+      <DependentUpon>Profile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BitBooks\Profile.aspx.designer.cs">
+      <DependentUpon>Profile.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Home.aspx.cs">
+      <DependentUpon>Home.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Home.aspx.designer.cs">
+      <DependentUpon>Home.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="piczardUserControls\simpleImageUploadUserControl\SimpleImageUpload.ascx.cs">
+      <DependentUpon>SimpleImageUpload.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="piczardUserControls\simpleImageUploadUserControl\SimpleImageUpload.ascx.designer.cs">
+      <DependentUpon>SimpleImageUpload.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="piczardUserControls\simpleImageUploadUserControl\upload.aspx.cs">
+      <DependentUpon>upload.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="piczardUserControls\simpleImageUploadUserControl\upload.aspx.designer.cs">
+      <DependentUpon>upload.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
@@ -341,7 +356,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
+    <Folder Include="Images\ProPic\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Account\Web.config" />

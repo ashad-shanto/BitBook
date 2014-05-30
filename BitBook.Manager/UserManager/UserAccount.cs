@@ -19,19 +19,19 @@ namespace BitBook.Manager.UserManager
             repo = new UserRepository();
         }
 
-        public string UserRegistration(User aUser)
+        public ObjectId UserRegistration(User aUser)
         {
-            string message = "";
-            bool regSuccess = false;
+
+            ObjectId userId = new ObjectId();
             try
             {
                 if (string.IsNullOrWhiteSpace(aUser.Email) || string.IsNullOrWhiteSpace(aUser.Password) || string.IsNullOrWhiteSpace(aUser.UserName))
                 {
-                    return message = "incorrectdata";
+                    return new ObjectId("0");
                 }
                 else if(!IsValidMailAddress(aUser.Email))
                 {
-                    return message = "invalidemail";
+                    return new ObjectId("0");
                 }
                 else
                 {
@@ -39,17 +39,17 @@ namespace BitBook.Manager.UserManager
                     aUser.JoinDate = DateTime.Now;
                     aUser.Friends = new List<UserBasic>();
                     
-                    regSuccess = repo.Add(aUser);
-                    if (regSuccess)
+                    userId = repo.AddUser(aUser);
+                    if (userId != new ObjectId("0"))
                     {
-                        message = "success";
+                        return userId;
                     }
                     else
                     {
-                        message = "regfailed";
+                        return new ObjectId("0");
                     }
                 }
-                return message;
+                
             }
             catch (Exception ex)
             {

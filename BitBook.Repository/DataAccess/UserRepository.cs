@@ -100,6 +100,21 @@ namespace BitBook.Repository.DataAccess
         }
 
 
+        public ObjectId AddUser(User aUser)
+        {
+            try
+            {
+                Collection.Insert(aUser);
+                return aUser._id;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+        }
+
         public bool CheckUserExist(ObjectId id)
         {
             bool exist = false;
