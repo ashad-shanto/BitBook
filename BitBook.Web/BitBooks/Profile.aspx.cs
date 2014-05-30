@@ -197,7 +197,8 @@ namespace BitBook.Web
                 try
                 {
                     PostManage manage = new PostManage();
-                    manage.RemovePost(new ObjectId(e.CommandArgument.ToString()));
+                    manage.LikePost(new ObjectId(e.CommandArgument.ToString()), new ObjectId(Session["UserId"].ToString()));
+                    
                 }
                 catch (Exception ex)
                 {
@@ -228,7 +229,8 @@ namespace BitBook.Web
 
         protected void addFriend_Click(object sender, EventArgs e)
         {
-
+            UserInformation info = new UserInformation();
+            UserBasic basic = new UserBasic();
         }
     }
 }
