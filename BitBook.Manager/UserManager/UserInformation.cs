@@ -102,5 +102,17 @@ namespace BitBook.Manager.UserManager
             }
             return allMatchedUser;
         }
+        public bool CheckFriendShip(ObjectId userId, ObjectId anotherId)
+        {
+            try
+            {
+                return repo.CheckFriendship(userId, anotherId);
+            }
+            catch (Exception ex)
+            {
+                
+                throw new Exception("Error friendship checking process");
+            }
+        }
     }
 }
