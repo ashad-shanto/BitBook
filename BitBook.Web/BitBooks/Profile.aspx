@@ -5,7 +5,7 @@
             //<![CDATA[
         function fvPicture1_Validate(sender, args) {
             // Validate the Picture1 (must contain a value)
-            args.IsValid = CodeCarvings.Wcs.Piczard.Upload.SimpleImageUpload.get_hasImage("<% =CodeCarvings.Piczard.Web.Helpers.JSHelper.EncodeString(this.Upload.ClientID) %>"); ;
+            args.IsValid = CodeCarvings.Wcs.Piczard.Upload.SimpleImageUpload.get_hasImage("<%= CodeCarvings.Piczard.Web.Helpers.JSHelper.EncodeString(this.Upload.ClientID) %>"); ;
         }
         function btnSave_clientClick() {
             if (CodeCarvings.Wcs.Piczard.Upload.SimpleImageUpload.get_uploadInProgress()) {
@@ -60,8 +60,8 @@
         </div>
         <div style="float:left; height:auto; width:70%;">
             <div style="width:80%; margin: 0 auto">
-                <textarea id="status" runat="server"></textarea>
-                <asp:Button ID="Button1" runat="server" Text="Update Status" />
+                <textarea id="status" runat="server" placeholder="Insert your bits"></textarea>
+                <asp:Button ID="UserPost" runat="server" Text="Update Status" OnClick="UserPost_Click" />
             </div>
             <ul>
             <asp:Repeater ID="UserPosts" runat="server">

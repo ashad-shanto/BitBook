@@ -14,6 +14,9 @@ namespace BitBook.Model
         public DateTime PostDate { get; set; }
         public List<UserBasic> Likers { get; set; }
         public int LikeCount { get; set; }
+        public string PostBody { get; set; }
+        public string PhotoName { get; set; }
+        public string Caption { get; set; }
         public Post()
         {
             this.Likers = new List<UserBasic>();

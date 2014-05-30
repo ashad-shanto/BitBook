@@ -117,5 +117,10 @@ namespace BitBook.Web
             UpdateImage.Visible = false;
             ImageButton.Visible = true;
         }
+
+        protected void UserPost_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
