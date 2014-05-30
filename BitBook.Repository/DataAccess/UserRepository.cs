@@ -21,7 +21,7 @@ namespace BitBook.Repository.DataAccess
                       Query<User>.EQ(e => e.Email, email),
                       Query<User>.EQ(e => e.Password, userPass)
                   );
-                aUser = Collection.FindAs<User>(query).SetFields(Fields<User>.Exclude(u => u.Password)).Single();
+                aUser = Collection.FindAs<User>(query).Single();
             }
             catch (Exception ex)
             {
