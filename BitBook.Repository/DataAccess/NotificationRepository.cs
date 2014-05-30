@@ -38,7 +38,7 @@ namespace BitBook.Repository.DataAccess
             {
                 allNotification = Collection.FindAs<Notification>(Query<Notification>.EQ(n => n._id, userId)).ToList();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 throw new Exception("Error fetching notifications" + ex);
             }
