@@ -3,7 +3,7 @@ body {
     background-color: rgba(230, 230, 230, 0.40);
 }
 
-body, * h1, * h2, * h3, * h4, * h5, * h6, * a, * p *, li, input, .button, form {
+body, a, * h1, * h2, * h3, * h4, * h5, * h6, * a, * p *, li, input, .button, form {
     font-family: 'Ubuntu', sans-serif !important;
     /*reason: had to override because dd used foundation's font*/
     font-weight: 400;
@@ -93,14 +93,15 @@ article {
     padding: 0.8rem 0;
 }
 
-/*.top-nav-element a {
-        color: rgba(0, 0, 0, 0.90);
-        transition: color 0.3s ease-in-out;
+    .top-nav-element a {
+        color: #808080;
+        padding: 0.2rem 0.4rem;
+        border-radius: 2px;
     }
 
         .top-nav-element a:hover {
-            color: rgba(0, 191, 255, 0.90);
-        }*/
+            color: #fff;
+        }
 
 #logo {
     position: relative;
@@ -116,3 +117,10 @@ article {
 
 /*#endregion */
 /*#endregion */
+
+.validation-message {
+    color: #ff0000;
+    position: relative;
+    top: -0.8rem;
+    font-size: smaller;
+}

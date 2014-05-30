@@ -21,7 +21,7 @@ namespace BitBook.Repository.DataAccess
                       Query<User>.EQ(e => e.Email, email),
                       Query<User>.EQ(e => e.Password, userPass)
                   );
-                aUser = Collection.FindAs<User>(query).Single();
+                aUser = Collection.FindAs<User>(query).FirstOrDefault();
             }
             catch (Exception ex)
             {
