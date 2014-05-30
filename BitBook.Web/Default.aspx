@@ -1,39 +1,71 @@
-﻿<%@ Page Title="Home Page" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="BitBook.Web._Default" %>
+﻿<%@ Page Title="Home Page" EnableEventValidation="false" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="BitBook.Web._Default" %>
 
-<asp:Content runat="server" ID="FeaturedContent" ContentPlaceHolderID="FeaturedContent">
-    <section class="featured">
-        <div class="content-wrapper">
-            <hgroup class="title">
-                <h1><%: Title %>.</h1>
-                <h2>Modify this template to jump-start your ASP.NET application.</h2>
-            </hgroup>
-            <p>
-                To learn more about ASP.NET, visit <a href="http://asp.net" title="ASP.NET Website">http://asp.net</a>.
-                The page features <mark>videos, tutorials, and samples</mark> to help you get the most from ASP.NET.
-                If you have any questions about ASP.NET visit
-                <a href="http://forums.asp.net/18.aspx" title="ASP.NET Forum">our forums</a>.
-            </p>
-        </div>
-    </section>
+<asp:Content runat="server" ID="Head" ContentPlaceHolderID="HeadContent">
 </asp:Content>
 <asp:Content runat="server" ID="BodyContent" ContentPlaceHolderID="MainContent">
-    <h3>We suggest the following:</h3>
-    <ol class="round">
-        <li class="one">
-            <h5>Getting Started</h5>
-            ASP.NET Web Forms lets you build dynamic websites using a familiar drag-and-drop, event-driven model.
-            A design surface and hundreds of controls and components let you rapidly build sophisticated, powerful UI-driven sites with data access.
-            <a href="http://go.microsoft.com/fwlink/?LinkId=245146">Learn more…</a>
-        </li>
-        <li class="two">
-            <h5>Add NuGet packages and jump-start your coding</h5>
-            NuGet makes it easy to install and update free libraries and tools.
-            <a href="http://go.microsoft.com/fwlink/?LinkId=245147">Learn more…</a>
-        </li>
-        <li class="three">
-            <h5>Find Web Hosting</h5>
-            You can easily find a web hosting company that offers the right mix of features and price for your applications.
-            <a href="http://go.microsoft.com/fwlink/?LinkId=245143">Learn more…</a>
-        </li>
-    </ol>
+
+    <div class="row">
+        <div class="large-6 columns">
+            <h3 class="welcome-message">Welcome to BitBook. Connect with friends, meet new people, stay in sync.</h3>
+            <form>
+                <fieldset>
+                    <h6>Log in</h6>
+                    <%--<label>USERNAME</label>
+                    <input type="text" placeholder="Insert email or username" />
+                    <label>PASSWORD</label>
+                    <input type="text" placeholder="Insert your password" />
+                    <input type="submit" class="button right" value="Sign in" />--%>
+
+
+
+                    <asp:Label ID="SignInEmailLabel" runat="server" Text="Email"></asp:Label>
+                    <asp:TextBox ID="SignInEmailTextBox" runat="server" TextMode="Email"></asp:TextBox>
+                    <asp:RequiredFieldValidator ID="SignInEmailRequiredValidator" runat="server" ControlToValidate="SignInEmailTextBox" ErrorMessage="Email Is Required" ValidationGroup="SignInValidationGroup"></asp:RequiredFieldValidator>
+                    
+                    <asp:Label ID="SignInPasswordLabel" runat="server" Text="Password"></asp:Label>
+                    <asp:TextBox ID="SignInPasswordTextox" runat="server" TextMode="Password"></asp:TextBox>
+                    <asp:RequiredFieldValidator ID="PasswordFieldValidator" runat="server" ControlToValidate="SignInPasswordTextox" ErrorMessage="Password Is Required" ValidationGroup="SignInValidationGroup"></asp:RequiredFieldValidator>
+
+                    <asp:Button ID="LoginButton" runat="server" OnClick="LoginButton_Click" Text="Log In" />
+                </fieldset>
+            </form>
+        </div>
+
+        <div class="large-6 columns">
+                <fieldset>
+                    <h6>Don't have an account? Sign up</h6>
+                    <%--<label>NAME</label>
+                    <input type="text" placeholder="Enter desired name" />
+                    <label>EMAIL</label>
+                    <input type="text" placeholder="Enter desired e-mail" />
+                    <label>PASSWORD</label>
+                    <input type="password" placeholder="Enter desired password" />
+                    <label>CONFIRM PASSWORD</label>
+                    <input type="password" placeholder="Repeat your password" />
+                    <input type="submit" class="button" value="Sign up" />--%>
+
+
+                    <asp:Label ID="userNameLabel" runat="server" Text="User Name"></asp:Label>
+                    <asp:TextBox ID="SignUpUserNameTextBox" runat="server"></asp:TextBox>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="SignUpUserNameTextBox" ErrorMessage="User Name Required" ValidationGroup="SignUpValidationGroup"></asp:RequiredFieldValidator>
+                    <br />
+                    <asp:Label ID="SignUpEmail" runat="server" Text="Email"></asp:Label>
+                    <asp:TextBox ID="SignUpEmailTextBox" runat="server" TextMode="Email"></asp:TextBox>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="SignUpEmailTextBox" ErrorMessage="Email Required" ValidationGroup="SignUpValidationGroup"></asp:RequiredFieldValidator>
+                    <br />
+                    <asp:Label ID="SignUpPasswordLabel" runat="server" Text="Password"></asp:Label>
+                    <asp:TextBox ID="SignUpPasswordTextBox" runat="server" TextMode="Password"></asp:TextBox>
+                    <asp:RequiredFieldValidator ID="SignUpPasswordRequiredValidator" runat="server" ControlToValidate="SignUpPasswordTextBox" ErrorMessage="Password Required" ValidationGroup="SignUpValidationGroup"></asp:RequiredFieldValidator>
+                    <br />
+                    <asp:Label ID="confirmPasswordLabel" runat="server" Text="Confirm Password"></asp:Label>
+                    <asp:TextBox ID="SignUpConfirmPasswordTextBox" TextMode="Password" runat="server"></asp:TextBox>
+                    <asp:RequiredFieldValidator ID="SignUpConfirmPasswordRequired" runat="server" ControlToValidate="SignUpConfirmPasswordTextBox" ErrorMessage="Confirm Your Password" ValidationGroup="SignUpValidationGroup"></asp:RequiredFieldValidator>
+                    <br />
+
+                    <asp:Button ID="SubmitButton" runat="server" Text="Submit" OnClick="SubmitButton_Click" />
+
+                    
+                </fieldset>
+        </div>
+    </div>
 </asp:Content>
