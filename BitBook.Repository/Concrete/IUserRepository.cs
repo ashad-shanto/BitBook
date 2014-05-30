@@ -12,5 +12,7 @@ namespace BitBook.Repository.Concrete
     {
         User UserLogin(string userName, string userPass);
         User GetById(ObjectId id);
+        List<User> SearchUserByMatchingName(string nameChunk);
+        bool UpdateUserInformation(User aUser);
     }
 }

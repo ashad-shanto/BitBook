@@ -12,13 +12,13 @@ namespace BitBook.Repository.DataAccess
 {
     public class UserRepository : DataRepository<User> , IUserRepository
     {
-        public User UserLogin(string userName, string userPass)
+        public User UserLogin(string email, string userPass)
         {
             User aUser = new User();
             try
             {
                 var query = Query.And(
-                      Query<User>.EQ(e => e.UserName, userName),
+                      Query<User>.EQ(e => e.Email, email),
                       Query<User>.EQ(e => e.Password, userPass)
                   );
                 aUser = Collection.FindAs<User>(query).Single();
@@ -45,6 +45,45 @@ namespace BitBook.Repository.DataAccess
                 throw new Exception("Error fetching user data" + ex);
             }
             return aUser;
+        }
+
+
+        public List<User> SearchUserByMatchingName(string nameChunk)
+        {
+            List<User> allMatchingUsers = new List<User>();
+            try
+            {
+                if(!string.IsNullOrWhiteSpace(nameChunk))
+                {
+                    nameChunk = string.Format("^{0}", nameChunk);
+                    allMatchingUsers = Collection.FindAs<User>( Query.Matches("MyField", new BsonRegularExpression(nameChunk, "i"))).SetFields(Fields<User>.Include(u => u.UserName, u => u.ProfilePic)).ToList();
+                }
+            }
+            catch (Exception ex)
+            {
+                
+                throw new Exception("Error getting users") ;
+            }
+            return allMatchingUsers;
+        }
+
+
+        public bool UpdateUserInformation(User aUser)
+        {
+            bool modifySuccess = false;
+            try
+            {
+                var aUserData = Collection.FindAndModify(Query<User>.EQ(u => u._id, aUser._id), SortBy<User>.Ascending(u => u.UserName), Update<User>.Set(u => u.UserName, aUser.UserName)
+                .Set(u => u.Email, aUser.Email).Set(u => u.UserCity, aUser.UserCity).Set(u => u.UserCountry, aUser.UserCountry), true);
+                if (aUserData != null)
+                    modifySuccess = true;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error modifying data" + ex);
+            }
+            return modifySuccess;
+            
         }
     }
 }
