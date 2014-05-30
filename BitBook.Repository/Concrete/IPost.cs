@@ -11,7 +11,7 @@ namespace BitBook.Repository.Concrete
     public interface IPost
     {
         List<Post> GetAllByUserId(ObjectId userId);
-        bool LikePost(ObjectId likerId);
+        bool LikePost(ObjectId postId, ObjectId likerId);
         bool RemovePost(ObjectId postId);
     }
 }

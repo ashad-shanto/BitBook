@@ -47,11 +47,9 @@ namespace BitBook.Repository.DataAccess
         {
             try
             {
-                var result = Collection.Remove(Query<Post>.EQ(p => p._id, postId), MongoDB.Driver.RemoveFlags.Single);
-                if ((int)result.DocumentsAffected > 0)
-                {
-                    return true;
-                }
+                Collection.Remove(Query<Post>.EQ(p => p._id, postId), MongoDB.Driver.RemoveFlags.Single);
+                return true;
+                
             }
             catch (Exception ex)
             {
@@ -61,9 +59,6 @@ namespace BitBook.Repository.DataAccess
         }
 
 
-        public bool LikePost(ObjectId likerId)
-        {
-            throw new NotImplementedException();
-        }
+        
     }
 }
