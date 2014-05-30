@@ -30,14 +30,14 @@ namespace BitBook.Web
             {
                 user = account.UserLogin(SignInEmailTextBox.Text.ToString(), SignInPasswordTextox.Text.ToString());
                 Session["UserId"] = user._id;
-                //need to build this page  
             }
             catch (Exception ex)
             {
                 //need to build this page
                 Response.Redirect("Error.aspx");
             }
-            Response.Redirect("~/BitBooks/Profile.aspx");
+                Response.Redirect("~/BitBooks/Profile.aspx");
+           
         }
 
         protected void SubmitButton_Click(object sender, EventArgs e)
