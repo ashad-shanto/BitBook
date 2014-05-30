@@ -12,5 +12,6 @@ namespace BitBook.Repository.Concrete
     {
         int CountUnreadNotifications(ObjectId userId);
         List<Notification> GetAllNotification(ObjectId userId);
+        bool UpdateNotificationStatus(ObjectId nId);
     }
 }

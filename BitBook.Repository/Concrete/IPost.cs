@@ -13,7 +13,7 @@ namespace BitBook.Repository.Concrete
         List<Post> GetAllByUserId(ObjectId userId);
         bool LikePost(ObjectId postId, ObjectId likerId);
         bool RemovePost(ObjectId postId);
-        //bool UnLikePost(ObjectId postId, ObjectId likerId);
-        //bool CheckValidLiker(ObjectId postId, ObjectId likerId);
+        bool UnLikePost(ObjectId postId, ObjectId likerId);
+        bool CheckValidLiker(ObjectId postId, ObjectId likerId);
     }
 }

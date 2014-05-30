@@ -36,13 +36,33 @@ namespace BitBook.Repository.DataAccess
             List<Notification> allNotification = new List<Notification>();
             try
             {
-                allNotification = Collection.FindAs<Notification>(Query<Notification>.EQ(n => n._id, userId)).ToList();
+                var query = Query.And(
+                      Query<Notification>.EQ(e => e._id, userId),
+                      Query<Notification>.EQ(e => e.Status, 0)
+                  );
+                allNotification = Collection.FindAs<Notification>(query).ToList();
             }
             catch (Exception ex)
             {
                 throw new Exception("Error fetching notifications" + ex);
             }
             return allNotification;
+        }
+
+
+        public bool UpdateNotificationStatus(ObjectId nId)
+        {
+            bool done = false;
+            try
+            {
+                var query = Collection.Update(Query<Notification>.EQ(u => u._id, nId), Update<Notification>.Set(u => u.Status, 1));
+                done = true;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(""+ex);
+            }
+            return done;
         }
     }
 }

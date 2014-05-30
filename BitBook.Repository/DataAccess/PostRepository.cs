@@ -56,8 +56,46 @@ namespace BitBook.Repository.DataAccess
                 throw new Exception("Error removing post" + ex);
             }
         }
+        public bool UnLikePost(ObjectId postId, ObjectId likerId)
+        {
+            bool removeSuccess = false;
+            UserBasic unLiker = new UserBasic() 
+            {
+                _id=likerId
+            };
+            
+            try
+            {
+                var quer = Collection.Update(Query<Post>.EQ(u => u._id, postId), Update<Post>.Pull(u => u.Likers, unLiker));
+                removeSuccess = true;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error removing data" + ex);
+            }
+            return removeSuccess;
+        }
 
 
-        
+        public bool CheckValidLiker(ObjectId postId, ObjectId likerId)
+        {
+            int result = 0;
+            try
+            {
+                var query = Query.And(
+                      Query.EQ("_id", postId),
+                      Query.EQ("Friends._id", likerId)
+                  );
+
+                result = (int)Collection.Find(query).Count();
+                if (result > 0)
+                    return true;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error checking friendship");
+            }
+            return false;
+        }
     }
 }
