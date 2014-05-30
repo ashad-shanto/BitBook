@@ -1,4 +1,5 @@
 ﻿using BitBook.Manager.UserManager;
+using BitBook.Manager.NotificationManager;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -230,7 +231,16 @@ namespace BitBook.Web
         protected void addFriend_Click(object sender, EventArgs e)
         {
             UserInformation info = new UserInformation();
-            UserBasic basic = new UserBasic();
+            User aUser = new User();
+            aUser = info.GetUserById(Request["user"].ToString());
+
+            Notification notify = new Notification();
+            notify.Friend.Username = aUser.UserName;
+            notify.Friend.ProfilePic = aUser.ProfilePic;
+            notify.Friend._id = aUser._id;
+            notify.Status = 0;
+            NotificationManage manage = new NotificationManage();
+            manage.AddNotification(notify);
         }
     }
 }

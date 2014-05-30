@@ -150,5 +150,22 @@ namespace BitBook.Manager.UserManager
                 throw new Exception("Error adding friend");
             } 
         }
+        public User GetByUserName(string userName)
+        {
+            User aUser = new User();
+            try
+            {
+                if (!string.IsNullOrWhiteSpace(userName))
+                {
+                    aUser = repo.GetByUserName(userName);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error"+ex);
+            }
+            return aUser;
+            
+        }
     }
 }
