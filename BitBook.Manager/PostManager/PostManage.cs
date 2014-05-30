@@ -50,8 +50,8 @@ namespace BitBook.Manager.PostManager
             {
                 throw new Exception("Error in like post" + ex);
             }
-            return false;
         }
+
         public bool RemovePost(ObjectId postId)
         {
             try

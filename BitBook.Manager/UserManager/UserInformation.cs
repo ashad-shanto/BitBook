@@ -114,5 +114,41 @@ namespace BitBook.Manager.UserManager
                 throw new Exception("Error friendship checking process");
             }
         }
+        public bool AddFriend(ObjectId userId, UserBasic friend)
+        {
+            try
+            {
+                if (string.IsNullOrWhiteSpace(userId.ToString()) || string.IsNullOrWhiteSpace(friend._id.ToString()))
+                {
+                    return false;
+                }
+                else
+                {
+                    return repo.AddFriend(userId, friend);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error adding friend");
+            } 
+        }
+        public bool RemoveFriend(ObjectId id, UserBasic friend)
+        {
+            try
+            {
+                if (string.IsNullOrWhiteSpace(id.ToString()) || string.IsNullOrWhiteSpace(friend._id.ToString()))
+                {
+                    return false;
+                }
+                else
+                {
+                    return repo.RemoveFriend(id, friend);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error adding friend");
+            } 
+        }
     }
 }

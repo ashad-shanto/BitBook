@@ -55,7 +55,6 @@ namespace BitBook.Repository.DataAccess
             {
                 throw new Exception("Error removing post" + ex);
             }
-            return false;
         }
 
 
