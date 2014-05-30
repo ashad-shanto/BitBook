@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace BitBook.Manager.UserManager
@@ -26,7 +27,11 @@ namespace BitBook.Manager.UserManager
             {
                 if (string.IsNullOrWhiteSpace(aUser.Email) || string.IsNullOrWhiteSpace(aUser.Password) || string.IsNullOrWhiteSpace(aUser.UserName))
                 {
-                    return message = "Please Enter Your Information Correctly";
+                    return message = "incorrectdata";
+                }
+                else if(!IsValidMailAddress(aUser.Email))
+                {
+                    return message = "invalidemail";
                 }
                 else
                 {
@@ -37,11 +42,11 @@ namespace BitBook.Manager.UserManager
                     regSuccess = repo.Add(aUser);
                     if (regSuccess)
                     {
-                        message = "Thanks, You have been registered successfully.";
+                        message = "success";
                     }
                     else
                     {
-                        message = "Sorry, Registration Failed. Please try again later.";
+                        message = "regfailed";
                     }
                 }
                 return message;
@@ -51,8 +56,33 @@ namespace BitBook.Manager.UserManager
 
                 throw new Exception("Error In Registration Process" + ex);
             }
-
-
+        }
+        public User UserLogin(string userName, string passWord)
+        {
+            User aUser = new User();
+            try
+            {
+                if (string.IsNullOrWhiteSpace(userName) || string.IsNullOrWhiteSpace(passWord))
+                {
+                    aUser.UserName = null;
+                }
+                else
+                {
+                    aUser = repo.UserLogin(userName, passWord);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error in login process");
+            }
+            return aUser;
+        }
+        private bool IsValidMailAddress(string email)
+        {
+            Regex mailRegx = new Regex(@"^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$");
+            bool valid = false;
+            valid = mailRegx.IsMatch(email);
+            return valid;
         }
     }
 }
