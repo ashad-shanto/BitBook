@@ -15,7 +15,8 @@
             <h3 class="welcome-message">Welcome to BitBook. Connect with friends, meet new people, stay in sync.</h3>
                 <fieldset>
                     <h6>Log in</h6>
-                    <label>USERNAME</label>
+                    <asp:Label ID="Alert" runat="server"></asp:Label>
+                    <p><label>Email</label></p>
                     <asp:TextBox ID="SignInEmailTextBox" runat="server" placeholder="Insert email or username" TextMode="Email"></asp:TextBox>
                     <asp:RequiredFieldValidator ID="SignInEmailRequiredValidator" CssClass="validation-message" runat="server" ControlToValidate="SignInEmailTextBox" ErrorMessage="Username is required" ValidationGroup="SignInValidationGroup"></asp:RequiredFieldValidator>
 

@@ -49,6 +49,15 @@ namespace BitBook.Web {
         protected global::System.Web.UI.WebControls.Panel panel1;
         
         /// <summary>
+        /// addFriend control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button addFriend;
+        
+        /// <summary>
         /// Image1 control.
         /// </summary>
         /// <remarks>
@@ -211,6 +220,15 @@ namespace BitBook.Web {
         protected global::System.Web.UI.WebControls.Repeater FriendList;
         
         /// <summary>
+        /// stausField control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl stausField;
+        
+        /// <summary>
         /// status control.
         /// </summary>
         /// <remarks>
@@ -218,6 +236,15 @@ namespace BitBook.Web {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlTextArea status;
+        
+        /// <summary>
+        /// PostPic control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::SimpleImageUpload PostPic;
         
         /// <summary>
         /// UserPost control.

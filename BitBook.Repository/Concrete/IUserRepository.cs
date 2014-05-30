@@ -19,5 +19,7 @@ namespace BitBook.Repository.Concrete
         bool CheckUserExist(ObjectId id);
         bool AddFriend(ObjectId userId, UserBasic friend);
         bool RemoveFriend(ObjectId id, UserBasic friend);
+        bool CheckEmailValidity(string email);
+        bool CheckFriendship(ObjectId userId, ObjectId anotherUserId);
     }
 }

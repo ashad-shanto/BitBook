@@ -66,6 +66,7 @@
     <asp:Button ID="SearchButton" runat="server" Text="Search Friend" Visible="true" OnClick="SearchButton_Click" />
     <asp:Panel runat="server" ID="panel1">
         <div style="float:left; height:auto; width:30%;">
+            <asp:Button ID="addFriend" runat="server" Text="Add as friend" OnClick="addFriend_Click" Visible="false" />
         <asp:Image ID="Image1" runat="server" ImageUrl="~/Images/ProPic/default.png" Height="200px" Width="200px" />
             <ccPiczardUC:SimpleImageUpload ID="Upload" runat="server" Visible="false" />
             <asp:Button ID="ImageButton" runat="server" Text="Update Profile Picture" OnClick="ImageButton_Click" />
@@ -103,14 +104,30 @@
             </ul>
         </div>
         <div style="float:left; height:auto; width:70%;">
-            <div style="width:80%; margin: 0 auto">
+            <div style="width:80%; margin-left:50px;" runat="server" id="stausField">
                 <textarea id="status" runat="server" placeholder="Insert your bits"></textarea>
-                <asp:Button ID="UserPost" runat="server" Text="Update Status" OnClick="UserPost_Click" />
+                <ccPiczardUC:SimpleImageUpload ID="PostPic" runat="server" />
+                <asp:Button ID="UserPost" runat="server" Text="Update Bit" OnClick="UserPost_Click" />
             </div>
-            <ul>
-            <asp:Repeater ID="UserPosts" runat="server">
+            <ul style="list-style-type:none; margin-left:50px; width:80%">
+            <asp:Repeater ID="UserPosts" runat="server" OnItemCommand="UserPosts_ItemCommand">
                 <ItemTemplate>                    
-                    <li><a href="#"><asp:Label ID="Label1" runat="server" Text="Label"></asp:Label></a></li>
+                    <li>
+                        <div style="width:10%; float:left">
+                            <img src="../Images/ProPic/<%#Eval("PostedBy.ProfilePic") %>" style="width:50px; height:50px;" />
+                        </div>
+                        <div style="width:75%; float:left">                            
+                            <a href='Profile.aspx?user=<%#Eval("PostedBy._id") %>'><%#Eval("PostedBy.Username") %></a> posted on <%#Eval("PostDate") %> 
+                            <p><%#Eval("PostBody") %></p>
+                            <img src="../Images/PostPic/<%#Eval("PhotoName") %>" alt="" style="width:80%" />
+                        </div>
+                        <div style="width:15%; float:left">
+                            <asp:Button runat="server" ID="deleteBtn" Text="Unbit" CommandArgument='<%#Eval("_id") %>' CommandName="Delete" Width="80px" />
+                            <asp:LinkButton ID="likeButton" runat="server" CommandArgument='<%#Eval("_id") %>' CommandName="Like">Like</asp:LinkButton>
+                            <asp:Label ID="Label2" runat="server" Text='<%#Eval("LikeCount") %>'></asp:Label>
+                            <asp:LinkButton ID="unlikeButton" runat="server" CommandArgument='<%#Eval("_id") %>' CommandName="Unlike" Visible="false">Unlike</asp:LinkButton>
+                        </div>
+                    </li>
                 </ItemTemplate>
             </asp:Repeater> 
             </ul>           
