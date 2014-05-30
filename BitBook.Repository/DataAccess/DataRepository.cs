@@ -38,16 +38,15 @@ namespace BitBook.Repository.DataAccess
 
         public bool Add(T entity)
         {
-
             try
             {
                 Collection.Insert(entity);
                 return true;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
-                throw;
+                throw new Exception("Error adding data" + ex);
             }
 
 

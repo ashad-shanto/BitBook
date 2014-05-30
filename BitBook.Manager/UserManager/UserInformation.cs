@@ -71,5 +71,24 @@ namespace BitBook.Manager.UserManager
                 return repo.UpdateProfilePic(id, photoName);
             }
         }
+
+        public bool UserExists(ObjectId userId)
+        {
+            return repo.CheckUserExist(userId);
+        }
+
+        public List<User> SearchUserByMatchingName(string nameChunk)
+        {
+            List<User> allMatchedUser = new List<User>();
+            try
+            {
+                allMatchedUser = repo.SearchUserByMatchingName(nameChunk);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error finding users" + ex);
+            }
+            return allMatchedUser;
+        }
     }
 }
