@@ -40,6 +40,18 @@ namespace BitBook.Manager.PostManager
             }
             return allPost;
         }
+        public bool LikePost(ObjectId postId, ObjectId likerId)
+        {
+            try
+            {
+                return repo.LikePost(postId, likerId);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error in like post" + ex);
+            }
+            return false;
+        }
         public bool RemovePost(ObjectId postId)
         {
             try
