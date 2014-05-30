@@ -4,15 +4,16 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{E97A182E-F8E4-4FA6-94C5-968C1B7C8B01}</ProjectGuid>
-    <OutputType>Library</OutputType>
+    <ProjectGuid>{34CF5513-D4FA-4341-BF80-460A496225C6}</ProjectGuid>
+    <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>BitBook.Model</RootNamespace>
-    <AssemblyName>BitBook.Model</AssemblyName>
+    <RootNamespace>BitBook.Console</RootNamespace>
+    <AssemblyName>BitBook.Console</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -22,6 +23,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -30,18 +32,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="BitBook.Model, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\Debug\BitBook.Model.dll</HintPath>
-    </Reference>
-    <Reference Include="MongoDB.Bson, Version=1.9.1.221, Culture=neutral, PublicKeyToken=f686731cfb9cc103, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\Debug\MongoDB.Bson.dll</HintPath>
-    </Reference>
-    <Reference Include="MongoDB.Driver, Version=1.9.1.221, Culture=neutral, PublicKeyToken=f686731cfb9cc103, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\Debug\MongoDB.Driver.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -51,23 +41,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Post.cs" />
-    <Compile Include="PostPhoto.cs" />
-    <Compile Include="PostText.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="User.cs" />
-    <Compile Include="UserBasic.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
+    <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="bin\Debug\BitBook.Model.dll" />
-    <Content Include="bin\Debug\BitBook.Model.pdb" />
-    <Content Include="bin\Debug\MongoDB.Bson.dll" />
-    <Content Include="bin\Debug\MongoDB.Bson.xml" />
-    <Content Include="bin\Debug\MongoDB.Driver.dll" />
-    <Content Include="bin\Debug\MongoDB.Driver.xml" />
+    <ProjectReference Include="..\BitBook.Manager\BitBook.Manager.csproj">
+      <Project>{e694d826-405f-4ea8-a2d5-334c8e5619d9}</Project>
+      <Name>BitBook.Manager</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BitBook.Model\BitBook.Model.csproj">
+      <Project>{e97a182e-f8e4-4fa6-94c5-968c1b7c8b01}</Project>
+      <Name>BitBook.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BitBook.Repository\BitBook.Repository.csproj">
+      <Project>{59eaab7e-fb4a-4f4d-a8da-0a1b70b9f0de}</Project>
+      <Name>BitBook.Repository</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

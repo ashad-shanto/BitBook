@@ -39,5 +39,37 @@ namespace BitBook.Manager.UserManager
             }
             return aUser;
         }
+        public bool UpdateUserData(User aUser)
+        {
+            bool updateDone = false;
+            try
+            {
+                if(string.IsNullOrWhiteSpace(aUser.UserName) || string.IsNullOrWhiteSpace(aUser.Email))
+                {
+                    return false;
+                }
+                else
+                {
+                    updateDone = repo.UpdateUserInformation(aUser);
+                }
+            }
+            catch (Exception ex)
+            {
+                
+                throw new Exception("error updating user data" + ex);
+            }
+            return updateDone;
+        }
+        public bool UpdateProfilePic(string id, string photoName)
+        {
+            if(string.IsNullOrWhiteSpace(id) || string.IsNullOrWhiteSpace(photoName))
+            {
+                return false;
+            }
+            else
+            {
+                return repo.UpdateProfilePic(id, photoName);
+            }
+        }
     }
 }

@@ -57,18 +57,18 @@ namespace BitBook.Manager.UserManager
                 throw new Exception("Error In Registration Process" + ex);
             }
         }
-        public User UserLogin(string userName, string passWord)
+        public User UserLogin(string email, string passWord)
         {
             User aUser = new User();
             try
             {
-                if (string.IsNullOrWhiteSpace(userName) || string.IsNullOrWhiteSpace(passWord))
+                if (string.IsNullOrWhiteSpace(email) || string.IsNullOrWhiteSpace(passWord))
                 {
                     aUser.UserName = null;
                 }
                 else
                 {
-                    aUser = repo.UserLogin(userName, passWord);
+                    aUser = repo.UserLogin(email, passWord);
                 }
             }
             catch (Exception ex)

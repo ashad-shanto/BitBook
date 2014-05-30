@@ -1,0 +1,138 @@
+﻿/*#region master page */
+body {
+    margin-top: 0;
+}
+
+/*#region generic */
+body {
+    background-color: rgba(230, 230, 230, 0.40);
+}
+
+body, * h1, * h2, * h3, * h4, * h5, * h6, * a, * p *, li, input, .button, form {
+    font-family: 'Ubuntu', sans-serif !important;
+    /*reason: had to override because dd used foundation's font*/
+    font-weight: 400;
+}
+
+* a {
+    transition: color 0.5s ease-in-out;
+}
+
+article {
+    background-color: #fff;
+    border-radius: 1.4px;
+}
+
+.button, .button-primary {
+    font-size: medium;
+    font-weight: 100;
+    max-width: 25%;
+    padding: 0.6rem 0.2rem;
+    border: 0;
+    border-radius: 1px;
+    background-color: #808080;
+    transition: color 0.5s ease-in;
+    transition: background-color 0.5s ease-out;
+}
+
+    .button:hover {
+    }
+
+.contains-margin-bottom {
+    margin-bottom: 0.4rem;
+}
+/*#endregion */
+
+/*#region header */
+.top-bar {
+    min-height: 3.4rem;
+    background: linear-gradient(rgba(246,246,246,1.0),#dedede);
+}
+
+/*#region logo */
+
+.logo h1 {
+    font-family: 'Mountains of Christmas', cursive !important;
+    font-size: 1.6rem;
+    color: rgba(0, 0, 0, 0.90);
+    padding: 0.2rem;
+    transition: color 0.5s ease-in-out;
+}
+
+    .logo h1:hover {
+        color: rgba(0, 191, 255, 0.90);
+    }
+
+/*#endregion */
+
+/*#region search */
+
+.search-area:last-child {
+    margin-left: 0 !important;
+}
+
+.search input {
+    width: 40%;
+    border-radius: 3px;
+    transition: width 0.2s ease;
+}
+
+    .search input:focus {
+        width: 100%;
+    }
+
+.account-panel a {
+    background-color: transparent;
+    transition: background-color 0.4s ease-out;
+}
+
+    .account-panel a:hover {
+        color: #fff;
+        background-color: rgba(128, 128, 128, 0.60);
+    }
+/*#endregion */
+
+/*#region top bar navigation */
+
+.top-nav-element {
+    padding: 0.8rem 0;
+}
+
+/*.top-nav-element a {
+        color: rgba(0, 0, 0, 0.90);
+        transition: color 0.3s ease-in-out;
+    }
+
+        .top-nav-element a:hover {
+            color: rgba(0, 191, 255, 0.90);
+        }*/
+
+#logo {
+    position: relative;
+    top: -1.4rem;
+}
+
+.footer-message-container {
+}
+
+    .footer-message-container p {
+        color: rgba(128, 128, 128, 0.90);
+    }
+
+/*#endregion */
+/*#endregion */
+
+/*.my-button {
+    font-size: medium;
+    font-weight: 100;
+    color: #808080;
+    transition: color 0.5s ease-in;
+    background-color: rgba(128, 128, 128, 0.60);
+    border-radius: 3px;
+    transition: background-color 0.5s ease-out;
+}
+
+    .my-button:hover {
+        color: #fff;
+        background-color: rgba(128, 128, 128, 0.90);
+    }*/
