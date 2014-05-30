@@ -22,6 +22,7 @@
 <asp:Content ID="body" runat="server" ContentPlaceHolderID="MainContent">
     <asp:Panel runat="server" ID="panel1">
         <div style="float:left; height:auto; width:30%;">
+            <asp:Button ID="addFriend" runat="server" Text="Add as friend" OnClick="addFriend_Click" Visible="false" />
         <asp:Image ID="Image1" runat="server" ImageUrl="~/Images/ProPic/default.png" Height="200px" Width="200px" />
             <ccPiczardUC:SimpleImageUpload ID="Upload" runat="server" Visible="false" />
             <asp:Button ID="ImageButton" runat="server" Text="Update Profile Picture" OnClick="ImageButton_Click" />
@@ -77,7 +78,9 @@
                             <img src="../Images/PostPic/<%#Eval("PhotoName") %>" alt="" style="width:80%" />
                         </div>
                         <div style="width:15%; float:left">
-                            <asp:Button runat="server" ID="deleteBtn" Text="Delete" CommandArgument='<%#Eval("_id") %>' CommandName="Delete" Width="80px" />
+                            <asp:Button runat="server" ID="deleteBtn" Text="Unbit" CommandArgument='<%#Eval("_id") %>' CommandName="Delete" Width="80px" />
+                            <asp:LinkButton ID="likeButton" runat="server" CommandArgument='<%#Eval("_id") %>' CommandName="Like">Like</asp:LinkButton>
+                            <asp:LinkButton ID="unlikeButton" runat="server" CommandArgument='<%#Eval("_id") %>' CommandName="Unlike" Visible="false">Unlike</asp:LinkButton>
                         </div>
                     </li>
                 </ItemTemplate>

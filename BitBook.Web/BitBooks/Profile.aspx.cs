@@ -21,7 +21,7 @@ namespace BitBook.Web
             {
                 if (Session["UserId"].ToString() != Request["user"].ToString())
                 {
-                    ImageButton.Visible = false; Update.Visible = false; stausField.Visible = false;
+                    ImageButton.Visible = false; Update.Visible = false; stausField.Visible = false; addFriend.Visible = true;
                 }
                 if (!this.IsPostBack)
                 {
@@ -29,7 +29,8 @@ namespace BitBook.Web
                     this.Upload.CropConstraint = new FixedCropConstraint(300, 300);
                     this.Upload.CropConstraint.DefaultImageSelectionStrategy = CropConstraintImageSelectionStrategy.WholeImage;
                     this.Upload.PreviewFilter = new FixedResizeConstraint(150, 150);
-                    ShowData();                    
+                    ShowData();
+                    BindRepeater();
                 }
             }
             else
@@ -52,13 +53,6 @@ namespace BitBook.Web
                 {
                     Image1.ImageUrl = "~/Images/Propic/" + aUser.ProfilePic;
                 }
-                
-                List<Post> posts = new List<Post>();
-                PostManage postMng = new PostManage();
-                posts = postMng.GetAllByUserId(new ObjectId(Request["user"].ToString()));
-
-                UserPosts.DataSource = posts;
-                UserPosts.DataBind();
             }
             catch(Exception ex)
             {
@@ -71,6 +65,16 @@ namespace BitBook.Web
                 txtCity.Text = "Dhaka"; txtCity.Visible = false;
                 txtCountry.Text = "Bangladesh"; txtCountry.Visible = false;
             }
+        }
+
+        public void BindRepeater()
+        {
+            List<Post> posts = new List<Post>();
+            PostManage postMng = new PostManage();
+            posts = postMng.GetAllByUserId(new ObjectId(Request["user"].ToString()));
+
+            UserPosts.DataSource = posts;
+            UserPosts.DataBind();
         }
 
         protected void HideControl(object sender, EventArgs e)
@@ -142,21 +146,31 @@ namespace BitBook.Web
             {
                 imgoutname = null;
             }
-            UserInformation info = new UserInformation();
-            User aUser = new User();
-            aUser = info.GetUserById(Session["UserId"].ToString());
-            Post aPost = new Post();
-            aPost.PostBody = status.InnerText;
-            aPost.PhotoName = imgoutname;
-            aPost.PostedBy._id = aUser._id;
-            aPost.PostedBy.Username = aUser.UserName;
-            aPost.PostedBy.ProfilePic = aUser.ProfilePic;
-            aPost.PostDate = DateTime.Now;
+            try
+            {
+                UserInformation info = new UserInformation();
+                User aUser = new User();
+                aUser = info.GetUserById(Session["UserId"].ToString());
+                Post aPost = new Post();
+                aPost.PostBody = status.InnerText;
+                aPost.PhotoName = imgoutname;
+                aPost.PostedBy._id = aUser._id;
+                aPost.PostedBy.Username = aUser.UserName;
+                aPost.PostedBy.ProfilePic = aUser.ProfilePic;
+                aPost.PostDate = DateTime.Now;
 
-            PostManage manage = new PostManage();
-            manage.CreateTextPost(aPost);
-            status.InnerText = "";
-            ShowData();
+                PostManage manage = new PostManage();
+                manage.CreateTextPost(aPost);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error occured while creating post!");
+            }
+            finally
+            {
+                status.InnerText = "";
+                BindRepeater();
+            }
         }
 
         protected void UserPosts_ItemCommand(object source, RepeaterCommandEventArgs e)
@@ -164,10 +178,57 @@ namespace BitBook.Web
             Button delete = (Button)e.Item.FindControl("deleteBtn");
             if (e.CommandName == "Delete")
             {
-                PostManage manage = new PostManage();
-                manage.RemovePost(new ObjectId(e.CommandArgument.ToString()));
-                ShowData();
+                try
+                {
+                    PostManage manage = new PostManage();
+                    manage.RemovePost(new ObjectId(e.CommandArgument.ToString()));
+                }
+                catch(Exception ex)
+                {
+                    throw new Exception("Error occured while deleting post!");
+                }
+                finally
+                {
+                    BindRepeater();
+                }                
             }
+            if (e.CommandName == "Like")
+            {
+                try
+                {
+                    PostManage manage = new PostManage();
+                    manage.RemovePost(new ObjectId(e.CommandArgument.ToString()));
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception("Error occured while liking post!");
+                }
+                finally
+                {
+                    BindRepeater();
+                }
+            }
+            if (e.CommandName == "Unlike")
+            {
+                try
+                {
+                    PostManage manage = new PostManage();
+                    manage.RemovePost(new ObjectId(e.CommandArgument.ToString()));
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception("Error occured while unliking post!");
+                }
+                finally
+                {
+                    BindRepeater();
+                }
+            }
+        }
+
+        protected void addFriend_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
