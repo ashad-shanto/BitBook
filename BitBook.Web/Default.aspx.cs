@@ -23,15 +23,40 @@ namespace BitBook.Web
             }
         }
 
+        private string message;
+        public string ValidateLoginForm(string email, string password) 
+        {
+            if (string.IsNullOrEmpty(email) || string.IsNullOrWhiteSpace(email)) 
+            {
+                message += "Email Is Required \n";
+            }
+
+            if (string.IsNullOrEmpty(password) || string.IsNullOrWhiteSpace(password))
+            {
+                message += "Password Is Required";
+            }
+
+            return message;
+        }
+
         protected void LoginButton_Click(object sender, EventArgs e)
         {
+            message = "";
+            message = ValidateLoginForm(SignInEmailTextBox.Text, SignInPasswordTextox.Text);
+
+            if (message != null)
+            {
+                Page.ClientScript.RegisterStartupScript(this.GetType(), "myScript", "ValidateForm();", true);
+            }
+
+
             account = new UserAccount();
             try
             {
                 user = account.UserLogin(SignInEmailTextBox.Text.ToString(), SignInPasswordTextox.Text.ToString());
-                if(user == null)
+                if(user.UserName == null)
                 {
-                    Alert.Text = "Invalid username or password!";
+                    //Alert.Text = "Invalid username or password!";
                 }
                 else
                 {
@@ -48,7 +73,7 @@ namespace BitBook.Web
             {
                 if(Session["UserId"] != null)
                 {
-                    Response.Redirect("~/BitBooks/Profile.aspx?user=" + user._id);
+                    Response.Redirect("~/BitBooks/Profile.aspx?user=" + user._id, false);
                 }
             }
         }
@@ -65,15 +90,9 @@ namespace BitBook.Web
 
                 account = new UserAccount();
                 userId = account.UserRegistration(user);
-                if (userId != new ObjectId("0"))
-                {
-                    Session["UserId"] = userId;
-                    Response.Redirect("~/BitBooks/Profile.aspx?user=" + userId);
-                }
-                else
-                {
-                    Response.Redirect("Error.aspx");
-                }
+                Session["UserId"] = userId;
+                Response.Redirect("~/BitBooks/Profile.aspx?user=" + userId);
+               
                 
                 //redirect to login page
             }
@@ -81,10 +100,6 @@ namespace BitBook.Web
             {
                 //add error page
                 Response.Redirect("");
-            }
-            finally
-            {
-                
             }
         }
 

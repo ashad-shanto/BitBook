@@ -43,6 +43,13 @@
     </asp:PlaceHolder>
 
     <script type="text/javascript">
+        function NoUserFoundMsg()
+        {
+            alert("No User Found");
+        }
+    </script>
+
+    <script type="text/javascript">
             //<![CDATA[
         function fvPicture1_Validate(sender, args) {
             // Validate the Picture1 (must contain a value)

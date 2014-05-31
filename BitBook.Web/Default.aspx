@@ -7,6 +7,13 @@
             $("#SearchBarTextBox").hide();
         });
     </script>--%>
+    <script type="text/javascript">
+        function ValidateForm()
+        {
+            alert("Please Complete The Form");
+        }
+    </script>
+
 </asp:Content>
 <asp:Content runat="server" ID="BodyContent" ContentPlaceHolderID="MainContent">
 
@@ -34,20 +41,20 @@
                 <%--name--%>
                 <label>NAME</label>
                 <asp:TextBox ID="SignUpUserNameTextBox" runat="server" placeholder="Enter desired name"></asp:TextBox>
-                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" CssClass="validation-message" runat="server" ControlToValidate="SignUpUserNameTextBox" ErrorMessage="Name is Required" ValidationGroup="SignUpValidationGroup"></asp:RequiredFieldValidator>
+                <%--<asp:RequiredFieldValidator ID="RequiredFieldValidator1" CssClass="validation-message" runat="server" ControlToValidate="SignUpUserNameTextBox" ErrorMessage="Name is Required" ValidationGroup="SignUpValidationGroup"></asp:RequiredFieldValidator>--%>
 
                 <%--email--%>
                 <label>EMAIL</label>
                 <asp:TextBox ID="SignUpEmailTextBox" runat="server" placeholder="Enter desired e-mail" TextMode="Email"></asp:TextBox>
-                <asp:RequiredFieldValidator ID="RequiredFieldValidator2" CssClass="validation-message" runat="server" ControlToValidate="SignUpEmailTextBox" ErrorMessage="Email is Required" ValidationGroup="SignUpValidationGroup"></asp:RequiredFieldValidator>
+                <%--<asp:RequiredFieldValidator ID="RequiredFieldValidator2" CssClass="validation-message" runat="server" ControlToValidate="SignUpEmailTextBox" ErrorMessage="Email is Required" ValidationGroup="SignUpValidationGroup"></asp:RequiredFieldValidator>--%>
                 <%--password--%>
                 <label>PASSWORD</label>
                 <asp:TextBox ID="SignUpPasswordTextBox" placeholder="Enter password" runat="server" TextMode="Password" ></asp:TextBox>
-                <asp:RequiredFieldValidator ID="SignUpPasswordRequiredValidator" CssClass="validation-message" runat="server" ControlToValidate="SignUpPasswordTextBox" ErrorMessage="Password is Required" ValidationGroup="SignUpValidationGroup"></asp:RequiredFieldValidator>
+                <%--<asp:RequiredFieldValidator ID="SignUpPasswordRequiredValidator" CssClass="validation-message" runat="server" ControlToValidate="SignUpPasswordTextBox" ErrorMessage="Password is Required" ValidationGroup="SignUpValidationGroup"></asp:RequiredFieldValidator>--%>
                 <%--confirm password--%>
                 <label>CONFIRM PASSWORD</label>
                 <asp:TextBox ID="SignUpConfirmPasswordTextBox" placeholder="Repeat your password" TextMode="Password" runat="server"></asp:TextBox>
-                <asp:RequiredFieldValidator ID="SignUpConfirmPasswordRequired" CssClass="validation-message" runat="server" ControlToValidate="SignUpConfirmPasswordTextBox" ErrorMessage="Confirm password is required" ValidationGroup="SignUpValidationGroup"></asp:RequiredFieldValidator>
+                <%--<asp:RequiredFieldValidator ID="SignUpConfirmPasswordRequired" CssClass="validation-message" runat="server" ControlToValidate="SignUpConfirmPasswordTextBox" ErrorMessage="Confirm password is required" ValidationGroup="SignUpValidationGroup"></asp:RequiredFieldValidator>--%>
                 <br />
                 <asp:Button ID="SubmitButton" runat="server" CssClass="button" Text="Sign Up" OnClick="SubmitButton_Click" ValidationGroup="SignUpValidationGroup" />
             </fieldset>

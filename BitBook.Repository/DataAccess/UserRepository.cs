@@ -205,7 +205,7 @@ namespace BitBook.Repository.DataAccess
             try
             {
                 var query = Query<User>.EQ(e => e.UserName, userName);
-                aUser = Collection.FindAs<User>(query).SetFields(Fields<User>.Include(u => u._id)).FirstOrDefault();
+                aUser = Collection.FindAs<User>(query).SetFields(Fields<User>.Include(u => u._id, u => u.UserName)).FirstOrDefault();
             }
             catch (Exception ex)
             {

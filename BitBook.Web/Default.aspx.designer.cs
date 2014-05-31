@@ -76,15 +76,6 @@ namespace BitBook.Web {
         protected global::System.Web.UI.WebControls.TextBox SignUpUserNameTextBox;
         
         /// <summary>
-        /// RequiredFieldValidator1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator1;
-        
-        /// <summary>
         /// SignUpEmailTextBox control.
         /// </summary>
         /// <remarks>
@@ -92,15 +83,6 @@ namespace BitBook.Web {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox SignUpEmailTextBox;
-        
-        /// <summary>
-        /// RequiredFieldValidator2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator2;
         
         /// <summary>
         /// SignUpPasswordTextBox control.
@@ -112,15 +94,6 @@ namespace BitBook.Web {
         protected global::System.Web.UI.WebControls.TextBox SignUpPasswordTextBox;
         
         /// <summary>
-        /// SignUpPasswordRequiredValidator control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator SignUpPasswordRequiredValidator;
-        
-        /// <summary>
         /// SignUpConfirmPasswordTextBox control.
         /// </summary>
         /// <remarks>
@@ -128,15 +101,6 @@ namespace BitBook.Web {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox SignUpConfirmPasswordTextBox;
-        
-        /// <summary>
-        /// SignUpConfirmPasswordRequired control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator SignUpConfirmPasswordRequired;
         
         /// <summary>
         /// SubmitButton control.
