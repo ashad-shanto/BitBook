@@ -78,7 +78,8 @@
                 </div>
                 <div class="large-4 columns account-panel">
                     <asp:Panel ID="LogPanel" runat="server">
-                    <asp:Label ID="Label1" runat="server"></asp:Label> | 
+                        <asp:Label ID="Label1" runat="server"></asp:Label>
+                        | 
                     <a href="Default.aspx" runat="server" onclick="Logout">Logout</a>
                     </asp:Panel>
                 </div>

@@ -193,11 +193,24 @@
     <Content Include="Content\themes\base\minified\jquery.ui.slider.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.tabs.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
-    <Content Include="Home.aspx" />
     <Content Include="Images\accent.png" />
     <Content Include="Images\bullet.png" />
     <Content Include="Images\default.png" />
     <Content Include="Images\heroAccent.png" />
+    <Content Include="Images\Icons\check-dark.png" />
+    <Content Include="Images\Icons\check-light.png" />
+    <Content Include="Images\Icons\close-dark.png" />
+    <Content Include="Images\Icons\close-light.png" />
+    <Content Include="Images\Icons\delete-light.png" />
+    <Content Include="Images\Icons\delete-dark.png" />
+    <Content Include="Images\Icons\edit-light.png" />
+    <Content Include="Images\Icons\edit-dark.png" />
+    <Content Include="Images\Icons\feature.camera-light.png" />
+    <Content Include="Images\Icons\feature.camera-dark.png" />
+    <Content Include="Images\Icons\folder-light.png" />
+    <Content Include="Images\Icons\folder-dark.png" />
+    <Content Include="Images\Icons\upload-light.png" />
+    <Content Include="Images\Icons\upload-dark.png" />
     <Content Include="Images\orderedList0.png" />
     <Content Include="Images\orderedList1.png" />
     <Content Include="Images\orderedList2.png" />
@@ -310,13 +323,6 @@
     </Compile>
     <Compile Include="BitBooks\Profile.aspx.designer.cs">
       <DependentUpon>Profile.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Home.aspx.cs">
-      <DependentUpon>Home.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Home.aspx.designer.cs">
-      <DependentUpon>Home.aspx</DependentUpon>
     </Compile>
     <Compile Include="piczardUserControls\simpleImageUploadUserControl\SimpleImageUpload.ascx.cs">
       <DependentUpon>SimpleImageUpload.ascx</DependentUpon>

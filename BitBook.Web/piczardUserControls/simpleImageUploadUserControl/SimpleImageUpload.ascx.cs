@@ -1176,7 +1176,8 @@ public partial class SimpleImageUpload
 
     #region UI elements
 
-    protected string _Text_EditButton = "Edit...";
+    //protected string _Text_EditButton = "Edit...";
+    protected string _Text_EditButton = "";
     /// <summary>
     /// Gets or sets the text of the "Edit" button.</summary>
     public string Text_EditButton
@@ -1191,7 +1192,7 @@ public partial class SimpleImageUpload
         }
     }
 
-    protected string _Text_RemoveButton = "Remove";
+    protected string _Text_RemoveButton = "";
     /// <summary>
     /// Gets or sets the text of the "Remove" button.</summary>
     public string Text_RemoveButton
@@ -1206,7 +1207,7 @@ public partial class SimpleImageUpload
         }
     }
 
-    protected string _Text_BrowseButton = "Browse...";
+    protected string _Text_BrowseButton = "Browse";
     /// <summary>
     /// Gets or sets the text of the "Browse" button.</summary>
     public string Text_BrowseButton

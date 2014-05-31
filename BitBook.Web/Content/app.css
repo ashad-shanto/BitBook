@@ -124,3 +124,124 @@ article {
     top: -0.8rem;
     font-size: smaller;
 }
+
+
+/*#region profile page */
+.profile-banner {
+    background-color: #fff;
+    padding: 0.4em;
+    border-radius: 1.6px;
+}
+
+#MainContent_UpdateImage, #MainContent_Upload_btnEdit, #MainContent_Upload_btnRemove, #fuFile, .image-button-edit, .image-button-edit-image {
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 2.4rem;
+    border-radius: 25px;
+    transition: background-image 0.6s ease-out;
+    transition: border 0.6s ease-out;
+    transition: background-color 0.6s ease-out;
+}
+
+    #MainContent_UpdateImage:hover, #MainContent_Upload_btnEdit:hover, #MainContent_Upload_btnRemove:hover, #fuFile, .image-button-edit:hover, .image-button-edit-image:hover {
+        border: 1px solid rgb(128, 128, 128);
+        background-color: rgb(128, 128, 128);
+    }
+
+.image-button-edit {
+    background-image: url("../Images/Icons/edit-light.png");
+}
+
+    .image-button-edit:hover {
+        background-image: url("../Images/Icons/edit-dark.png");
+    }
+
+.image-button-edit-image {
+    background-image: url("../Images/Icons/feature.camera-light.png");
+}
+
+    .image-button-edit-image:hover {
+        background-image: url("../Images/Icons/feature.camera-dark.png");
+    }
+
+.relative-for-container-effect {
+    position: relative;
+    top: -0.6rem;
+    left: 4.4rem;
+}
+
+.bordered-background {
+    border: 1.2px solid #808080;
+}
+
+.content-centered {
+    margin-left: auto;
+    margin-right: auto;
+    width: 90%;
+}
+
+.self-stream {
+}
+
+    .self-stream h3 {
+        color: rgba(128, 128, 128, 0.90);
+    }
+
+#MainContent_status {
+    max-width: 100%;
+    min-width: 100%;
+    min-height: 3.6rem;
+    max-height:5rem;
+}
+
+/*#region piczard image style overrides */
+
+
+#MainContent_Upload_content_statusMessage {
+}
+
+#MainContent_UpdateImage {
+    background-image: url("../Images/Icons/check-light.png");
+}
+
+    #MainContent_UpdateImage:hover {
+        background-image: url("../Images/Icons/check-dark.png");
+    }
+
+#MainContent_Upload_btnEdit {
+    background-image: url("../Images/Icons/upload-light.png");
+}
+
+    #MainContent_Upload_btnEdit:hover {
+        background-image: url("../Images/Icons/upload-dark.png");
+    }
+
+#MainContent_Upload_btnRemove {
+    background-image: url("../Images/Icons/delete-light.png");
+}
+
+    #MainContent_Upload_btnRemove:hover {
+        background-image: url("../Images/Icons/delete-dark.png");
+    }
+
+.conteinerDiv {
+    margin: 0 auto;
+}
+
+#fuFile, .fuFile {
+    max-width: 3rem !important;
+    max-height: 1.2rem !important;
+    margin: 0 auto;
+    background-image: url("../Images/Icons/folder-light.png");
+}
+
+    #fuFile:hover {
+        background-image: url("../Images/Icons/folder-dark.png");
+    }
+
+#MainContent_Upload_btnEdit, #MainContent_Upload_btnRemove, #fuFile {
+    width: 3rem !important;
+    height: 3rem !important;
+}
+
+/*#endregion */
