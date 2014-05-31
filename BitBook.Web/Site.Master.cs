@@ -88,6 +88,7 @@ namespace BitBook.Web
         protected void logout(object sender, EventArgs e)
         {
             Session["UserId"] = String.Empty;
+            Session["LoggedInUser"] = String.Empty;
             Response.Redirect("~/Default.aspx");
         }
     }
