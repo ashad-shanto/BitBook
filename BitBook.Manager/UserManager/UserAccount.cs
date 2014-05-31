@@ -77,6 +77,21 @@ namespace BitBook.Manager.UserManager
             }
             return aUser;
         }
+        //Return true if mail id is already in use
+        public bool CheckEmailValidity(string email)
+        {
+            bool used = false;
+            try
+            {
+                used = repo.CheckEmailValidity(email);
+            }
+            catch (Exception ex)
+            {
+                
+                throw new Exception("Error"+ex);
+            }
+            return used;
+        }
         //Return true is mail id is valid
         private bool IsValidMailAddress(string email)
         {
