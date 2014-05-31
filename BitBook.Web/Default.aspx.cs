@@ -87,19 +87,27 @@ namespace BitBook.Web
                 user.UserName = SignUpUserNameTextBox.Text;
                 user.Email = SignUpEmailTextBox.Text;
                 user.Password = SignUpPasswordTextBox.Text;
-
                 account = new UserAccount();
-                userId = account.UserRegistration(user);
-                Session["UserId"] = userId;
-                Response.Redirect("~/BitBooks/Profile.aspx?user=" + userId);
-               
-                
+
+                if(account.VerifyRegistrationData(user))
+                {
+                    userId = account.UserRegistration(user);
+                    Session["UserId"] = userId;
+                    Session["LoggedInUser"] = user.UserName;
+                    
+                }
+                else
+                {
+                    Response.Redirect("Default.aspx",false);
+
+                }
+                Response.Redirect("~/BitBooks/Profile.aspx?user=" + userId,false);
                 //redirect to login page
             }
             catch (Exception ex)
             {
                 //add error page
-                Response.Redirect("");
+                Response.Redirect("Error.aspx",false);
             }
         }
 

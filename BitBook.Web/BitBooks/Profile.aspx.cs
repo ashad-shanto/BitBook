@@ -1,4 +1,5 @@
 ﻿using BitBook.Manager.UserManager;
+using BitBook.Manager.NotificationManager;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -16,12 +17,18 @@ namespace BitBook.Web
     public partial class Profile : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
-        {
+        {     
             if(Session["UserId"] != null && Request["user"] != null)
             {
+                UserInformation info = new UserInformation();    
+                bool frndNotify = info.CheckFriendShip(new ObjectId(Session["UserId"].ToString()), new ObjectId(Request["user"].ToString()));
                 if (Session["UserId"].ToString() != Request["user"].ToString())
                 {
                     ImageButton.Visible = false; Update.Visible = false; stausField.Visible = false; addFriend.Visible = true;
+                }
+                if (frndNotify == true)
+                {
+                    addFriend.Text = "Friend Request Sent"; addFriend.Enabled = false;
                 }
                 if (!this.IsPostBack)
                 {
@@ -230,7 +237,18 @@ namespace BitBook.Web
         protected void addFriend_Click(object sender, EventArgs e)
         {
             UserInformation info = new UserInformation();
-            UserBasic basic = new UserBasic();
+            User aUser = new User();
+            aUser = info.GetUserById(Request["user"].ToString());
+
+            Notification notify = new Notification();
+            notify.Friend.Username = aUser.UserName;
+            notify.Friend.ProfilePic = aUser.ProfilePic;
+            notify.Friend._id = aUser._id;
+            notify.Status = 0;
+            NotificationManage manage = new NotificationManage();
+            manage.AddNotification(notify);
+
+            addFriend.Text = "Friend Request Sent"; addFriend.Enabled = false;
         }
 
         protected void SearchButton_Click(object sender, EventArgs e)

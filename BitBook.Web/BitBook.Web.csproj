@@ -69,12 +69,6 @@
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
     </Reference>
-    <Reference Include="AspNet.ScriptManager.jQuery">
-      <HintPath>..\packages\AspNet.ScriptManager.jQuery.1.8.2\lib\net45\AspNet.ScriptManager.jQuery.dll</HintPath>
-    </Reference>
-    <Reference Include="AspNet.ScriptManager.jQuery.UI.Combined">
-      <HintPath>..\packages\AspNet.ScriptManager.jQuery.UI.Combined.1.8.24\lib\net45\AspNet.ScriptManager.jQuery.UI.Combined.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.ScriptManager.MSAjax, Version=4.5.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
       <HintPath>..\packages\Microsoft.AspNet.ScriptManager.MSAjax.4.5.6\lib\net45\Microsoft.ScriptManager.MSAjax.dll</HintPath>
     </Reference>
@@ -139,6 +133,33 @@
     <Content Include="Account\RegisterExternalLogin.aspx" />
     <Content Include="BitBooks\UserInfoServices.asmx" />
     <Content Include="Contact.aspx" />
+    <Content Include="Content\app.css" />
+    <Content Include="Content\foundation\css\foundation.css" />
+    <Content Include="Content\foundation\css\foundation.min.css" />
+    <Content Include="Content\foundation\css\normalize.css" />
+    <Content Include="Content\foundation\js\foundation.min.js" />
+    <Content Include="Content\foundation\js\foundation\foundation.abide.js" />
+    <Content Include="Content\foundation\js\foundation\foundation.accordion.js" />
+    <Content Include="Content\foundation\js\foundation\foundation.alert.js" />
+    <Content Include="Content\foundation\js\foundation\foundation.clearing.js" />
+    <Content Include="Content\foundation\js\foundation\foundation.dropdown.js" />
+    <Content Include="Content\foundation\js\foundation\foundation.equalizer.js" />
+    <Content Include="Content\foundation\js\foundation\foundation.interchange.js" />
+    <Content Include="Content\foundation\js\foundation\foundation.joyride.js" />
+    <Content Include="Content\foundation\js\foundation\foundation.js" />
+    <Content Include="Content\foundation\js\foundation\foundation.magellan.js" />
+    <Content Include="Content\foundation\js\foundation\foundation.offcanvas.js" />
+    <Content Include="Content\foundation\js\foundation\foundation.orbit.js" />
+    <Content Include="Content\foundation\js\foundation\foundation.reveal.js" />
+    <Content Include="Content\foundation\js\foundation\foundation.tab.js" />
+    <Content Include="Content\foundation\js\foundation\foundation.tooltip.js" />
+    <Content Include="Content\foundation\js\foundation\foundation.topbar.js" />
+    <Content Include="Content\foundation\js\foundation\jquery.cookie.js" />
+    <Content Include="Content\foundation\js\vendor\fastclick.js" />
+    <Content Include="Content\foundation\js\vendor\jquery.cookie.js" />
+    <Content Include="Content\foundation\js\vendor\jquery.js" />
+    <Content Include="Content\foundation\js\vendor\modernizr.js" />
+    <Content Include="Content\foundation\js\vendor\placeholder.js" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />

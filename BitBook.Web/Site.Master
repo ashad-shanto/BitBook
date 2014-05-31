@@ -122,8 +122,9 @@
                 </div>
                 <div class="large-4 columns account-panel">
                     <asp:Panel ID="LogPanel" runat="server">
-                    <asp:Label ID="Label1" runat="server"></asp:Label> | 
-                    <asp:LinkButton ID="LinkButton1" runat="server" OnClick="logout">Logout</asp:LinkButton>
+                        <asp:Label ID="Label1" runat="server"></asp:Label> | 
+                        <asp:LinkButton ID="LinkButton1" runat="server" OnClick="logout">Logout</asp:LinkButton> | 
+                        <asp:LinkButton ID="notifications" runat="server" OnClick="notifications_Click"></asp:LinkButton> 
                     </asp:Panel>
                 </div>
             </nav>

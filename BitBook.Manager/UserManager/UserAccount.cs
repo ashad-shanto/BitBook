@@ -25,37 +25,16 @@ namespace BitBook.Manager.UserManager
             ObjectId userId = new ObjectId();
             try
             {
-                if (string.IsNullOrWhiteSpace(aUser.Email) || string.IsNullOrWhiteSpace(aUser.Password) || string.IsNullOrWhiteSpace(aUser.UserName))
-                {
-                    return new ObjectId("0");
-                }
-                else if(!IsValidMailAddress(aUser.Email))
-                {
-                    return new ObjectId("0");
-                }
-                else
-                {
-                    aUser._id = new ObjectId();
-                    aUser.JoinDate = DateTime.Now;
-                    aUser.Friends = new List<UserBasic>();
-                    
-                    userId = repo.AddUser(aUser);
-                    if (userId != new ObjectId("0"))
-                    {
-                        return userId;
-                    }
-                    else
-                    {
-                        return new ObjectId("0");
-                    }
-                }
-                
+                aUser._id = new ObjectId();
+                aUser.JoinDate = DateTime.Now;
+                aUser.Friends = new List<UserBasic>();
+                userId = repo.AddUser(aUser);            
             }
             catch (Exception ex)
             {
-
                 throw new Exception("Error In Registration Process" + ex);
             }
+            return userId;
         }
         public User UserLogin(string email, string passWord)
         {
@@ -107,6 +86,27 @@ namespace BitBook.Manager.UserManager
             }
             
             return valid;
+        }
+        public bool VerifyRegistrationData(User aUser)
+        {
+            bool isVerified = false;
+            try
+            {
+                if(string.IsNullOrWhiteSpace(aUser.UserName) || string.IsNullOrWhiteSpace(aUser.Password) || string.IsNullOrWhiteSpace(aUser.Email))
+                {
+                    isVerified = false;
+                }
+                else if(IsValidMailAddress(aUser.Email) && !CheckEmailValidity(aUser.Email))
+                {
+                    isVerified = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                
+                throw new Exception("error in register"+ex);
+            }
+            return isVerified;
         }
     }
 }
