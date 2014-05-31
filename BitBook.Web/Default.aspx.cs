@@ -1,4 +1,4 @@
-﻿using BitBook.Manager.UserManager;
+using BitBook.Manager.UserManager;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -36,6 +36,7 @@ namespace BitBook.Web
                 else
                 {
                     Session["UserId"] = user._id;
+                    Session["LoggedInUser"] = user.UserName;
                 }                
             }
             catch (Exception ex)
@@ -61,29 +62,26 @@ namespace BitBook.Web
                 user.UserName = SignUpUserNameTextBox.Text;
                 user.Email = SignUpEmailTextBox.Text;
                 user.Password = SignUpPasswordTextBox.Text;
-
                 account = new UserAccount();
-                userId = account.UserRegistration(user);
-                if (userId != new ObjectId("0"))
+                if(account.VerifyRegistrationData(user))
                 {
+                    userId = account.UserRegistration(user);
                     Session["UserId"] = userId;
-                    Response.Redirect("~/BitBooks/Profile.aspx?user=" + userId);
+                    
                 }
                 else
                 {
-                    Response.Redirect("Error.aspx");
+                    Response.Redirect("Default.aspx",false);
+
                 }
+                Response.Redirect("~/BitBooks/Profile.aspx?user=" + userId,false);
                 
                 //redirect to login page
             }
             catch (Exception ex)
             {
                 //add error page
-                Response.Redirect("");
-            }
-            finally
-            {
-                
+                Response.Redirect("Error.aspx",false);
             }
         }
 

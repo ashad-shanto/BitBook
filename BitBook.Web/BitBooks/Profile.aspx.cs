@@ -250,5 +250,14 @@ namespace BitBook.Web
 
             addFriend.Text = "Friend Request Sent"; addFriend.Enabled = false;
         }
+
+        protected void SearchButton_Click(object sender, EventArgs e)
+        {
+            UserInformation userInfo = new UserInformation();
+            var userId = userInfo.GetByUserName(SearchBarTextBox.Text);
+
+            Response.Redirect("~/BitBooks/Profile.aspx?user=" + userId._id.ToString());
+            
+        }
     }
 }

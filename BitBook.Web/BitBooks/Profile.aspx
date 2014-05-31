@@ -1,6 +1,47 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/Site.Master" CodeBehind="Profile.aspx.cs" Inherits="BitBook.Web.Profile" %>
 
 <asp:Content runat="server" ContentPlaceHolderID="HeadContent">
+    <script src="../Scripts/jquery-2.1.1.js"></script>
+    <script src="../Scripts/jquery-ui-1.10.4.js"></script>
+    <asp:PlaceHolder runat="server" ID="searchText">
+        <script type="text/javascript">
+            $(function () {
+                $(document).ready(function () {
+                    SearchText();
+
+                    function SearchText() {
+                        $("#<%=SearchBarTextBox.ClientID %>").autocomplete({
+                            source: function (request, response) {
+                                $.ajax({
+                                    url: "UserInfoServices.asmx/GetAllUsers",
+                                    type: "POST",
+                                    dataType: "json",
+                                    contentType: "application/json; charset=utf-8",
+                                    data: "{ 'txt' : '" + $("#<%=SearchBarTextBox.ClientID %>").val() + "' }",
+                                    dataFilter: function (data) { return data; },
+                                    success: function (data) {
+                                        response($.map(data.d, function (item) {
+                                            return {
+                                                label: item,
+                                                value: item
+                                            }
+                                        }))
+                                    },
+
+                                    error: function (result) {
+                                        alert("Error Occured!!");
+                                    }
+                                });
+                            },
+                            minLength: 1,
+                            delay: 10
+                        });
+                    }
+                });
+            })
+        </script>
+    </asp:PlaceHolder>
+
     <script type="text/javascript">
             //<![CDATA[
         function fvPicture1_Validate(sender, args) {
@@ -20,6 +61,9 @@
 </asp:Content>
 
 <asp:Content ID="body" runat="server" ContentPlaceHolderID="MainContent">
+    
+    <asp:TextBox ID="SearchBarTextBox" runat="server" placeholder="Look for friends and people baby" />
+    <asp:Button ID="SearchButton" runat="server" Text="Search Friend" Visible="true" OnClick="SearchButton_Click" />
     <asp:Panel runat="server" ID="panel1">
         <div style="float:left; height:auto; width:30%;">
             <asp:Button ID="addFriend" runat="server" Text="Add as friend" OnClick="addFriend_Click" Visible="false" />
