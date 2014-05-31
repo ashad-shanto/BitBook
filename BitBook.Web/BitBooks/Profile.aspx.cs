@@ -170,7 +170,7 @@ namespace BitBook.Web
             }
             else
             {
-                imgoutname = null;
+                imgoutname = "default.png";
             }
             try
             {
@@ -195,7 +195,7 @@ namespace BitBook.Web
             finally
             {
                 status.InnerText = "";
-                BindRepeater();
+                Response.Redirect(Request.RawUrl);
             }
         }
 

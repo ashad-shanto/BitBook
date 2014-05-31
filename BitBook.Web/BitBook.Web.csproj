@@ -223,9 +223,11 @@
     <Content Include="Content\themes\base\minified\jquery.ui.tabs.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
     <Content Include="BitBooks\Home.aspx" />
+    <Content Include="Error.aspx" />
     <Content Include="Images\accent.png" />
     <Content Include="Images\bullet.png" />
     <Content Include="Images\default.png" />
+    <Content Include="Images\error_unknownerror.png" />
     <Content Include="Images\heroAccent.png" />
     <Content Include="Images\orderedList0.png" />
     <Content Include="Images\orderedList1.png" />
@@ -240,6 +242,8 @@
     <Content Include="Default.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <Content Include="Images\PostPic\1471830_10200723392867941_646743246_n.jpg" />
+    <Content Include="Images\ProPic\default.png" />
     <Content Include="packages.config" />
     <Content Include="App_Data\__CCPZTF_78d3a7c598904cd48d0447186ad55482__wt.tmp" />
     <Content Include="piczardUserControls\simpleImageUploadUserControl\blank.gif" />
@@ -325,6 +329,7 @@
     </Compile>
     <Compile Include="BitBooks\UserInfoServices.asmx.cs">
       <DependentUpon>UserInfoServices.asmx</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Contact.aspx.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
@@ -339,6 +344,13 @@
     </Compile>
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Error.aspx.cs">
+      <DependentUpon>Error.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Error.aspx.designer.cs">
+      <DependentUpon>Error.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -395,8 +407,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Images\PostPic\" />
-    <Folder Include="Images\ProPic\" />
+    <Folder Include="Images\Icons\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Account\Web.config" />

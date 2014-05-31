@@ -17,17 +17,22 @@ namespace BitBook.Web.BitBooks
         {
             if (Session["UserId"] != null)
             {
-                List<BitBook.Model.Notification> notifications = new List<BitBook.Model.Notification>();
-                NotificationManage notMng = new NotificationManage();
-                notifications = notMng.GetAllNotifications(new ObjectId(Session["UserId"].ToString()));
-
-                NotifyRpt.DataSource = notifications;
-                NotifyRpt.DataBind();
+                RptrBind();
             }
             else
             {
                 Response.Redirect("~/Default.aspx", false);
             }
+        }
+
+        public void RptrBind()
+        {
+            List<BitBook.Model.Notification> notifications = new List<BitBook.Model.Notification>();
+            NotificationManage notMng = new NotificationManage();
+            notifications = notMng.GetAllNotifications(new ObjectId(Session["UserId"].ToString()));
+
+            NotifyRpt.DataSource = notifications;
+            NotifyRpt.DataBind();
         }
 
         protected void NotifyRpt_ItemCommand(object source, RepeaterCommandEventArgs e)
@@ -37,7 +42,8 @@ namespace BitBook.Web.BitBooks
             if (e.CommandName == "checkNotification")
             {
                 
-                manage.UpdateNotificationStatus(new ObjectId(e.CommandArgument.ToString()));               
+                manage.UpdateNotificationStatus(new ObjectId(e.CommandArgument.ToString()));
+                RptrBind();
             }
             if (e.CommandName == "addFriend")
             {
@@ -54,6 +60,7 @@ namespace BitBook.Web.BitBooks
                     {
                         manage.UpdateNotificationStatus(new ObjectId(e.CommandArgument.ToString()));   
                     }
+                    RptrBind();
                 }
                 else
                 {

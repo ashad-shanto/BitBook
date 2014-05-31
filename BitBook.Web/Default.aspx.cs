@@ -17,9 +17,16 @@ namespace BitBook.Web
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
+            if (Session["UserId"] != null)
             {
-                Clear();
+                Response.Redirect("~/BitBook/Home.aspx");
+            }
+            else
+            {
+                if (!IsPostBack)
+                {
+                    Clear();
+                }
             }
         }
 

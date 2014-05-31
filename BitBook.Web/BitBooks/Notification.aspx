@@ -11,7 +11,7 @@
             </div>
             <div style="width:15%; float:left">
                 <asp:LinkButton ID="addFriend" runat="server" CommandArgument='<%#Eval("_id") %>' CommandName="addFriend">Add as friend</asp:LinkButton>
-                <asp:LinkButton ID="markButton" runat="server" CommandArgument='<%#Eval("_id") %>' CommandName="checkNotification">Mark as seen</asp:LinkButton>
+                <asp:LinkButton ID="markButton" runat="server" CommandArgument='<%#Eval("_id") %>' CommandName="checkNotification">Reject friendship</asp:LinkButton>
             </div>
         </ItemTemplate>
     </asp:Repeater>
