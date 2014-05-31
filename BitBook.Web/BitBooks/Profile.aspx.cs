@@ -238,7 +238,7 @@ namespace BitBook.Web
             UserInformation userInfo = new UserInformation();
             var userId = userInfo.GetByUserName(SearchBarTextBox.Text);
 
-            Response.Redirect("~/BitBooks/Profile.aspx?user=" + userId);
+            Response.Redirect("~/BitBooks/Profile.aspx?user=" + userId._id.ToString());
             
         }
     }

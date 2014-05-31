@@ -198,7 +198,20 @@ namespace BitBook.Repository.DataAccess
                 throw new Exception("Error checking friendship");
             }
             return false;
-            
+        }
+        public User GetByUserName(string userName)
+        {
+            User aUser = new User();
+            try
+            {
+                var query = Query<User>.EQ(e => e.UserName, userName);
+                aUser = Collection.FindAs<User>(query).SetFields(Fields<User>.Include(u => u._id)).FirstOrDefault();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error fetching user data" + ex);
+            }
+            return aUser;
         }
     }
 }

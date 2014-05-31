@@ -36,6 +36,7 @@ namespace BitBook.Web
                 else
                 {
                     Session["UserId"] = user._id;
+                    Session["LoggedInUser"] = user.UserName;
                 }                
             }
             catch (Exception ex)
