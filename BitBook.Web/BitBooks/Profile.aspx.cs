@@ -17,12 +17,18 @@ namespace BitBook.Web
     public partial class Profile : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
-        {
+        {     
             if(Session["UserId"] != null && Request["user"] != null)
             {
+                UserInformation info = new UserInformation();    
+                bool frndNotify = info.CheckFriendShip(new ObjectId(Session["UserId"].ToString()), new ObjectId(Request["user"].ToString()));
                 if (Session["UserId"].ToString() != Request["user"].ToString())
                 {
                     ImageButton.Visible = false; Update.Visible = false; stausField.Visible = false; addFriend.Visible = true;
+                }
+                if (frndNotify == true)
+                {
+                    addFriend.Text = "Friend Request Sent"; addFriend.Enabled = false;
                 }
                 if (!this.IsPostBack)
                 {
@@ -241,6 +247,8 @@ namespace BitBook.Web
             notify.Status = 0;
             NotificationManage manage = new NotificationManage();
             manage.AddNotification(notify);
+
+            addFriend.Text = "Friend Request Sent"; addFriend.Enabled = false;
         }
     }
 }
