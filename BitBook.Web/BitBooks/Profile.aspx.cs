@@ -232,5 +232,14 @@ namespace BitBook.Web
             UserInformation info = new UserInformation();
             UserBasic basic = new UserBasic();
         }
+
+        protected void SearchButton_Click(object sender, EventArgs e)
+        {
+            UserInformation userInfo = new UserInformation();
+            var userId = userInfo.GetByUserName(SearchBarTextBox.Text);
+
+            Response.Redirect("~/BitBooks/Profile.aspx?user=" + userId._id.ToString());
+            
+        }
     }
 }

@@ -1,4 +1,4 @@
-﻿using BitBook.Manager.UserManager;
+using BitBook.Manager.UserManager;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -36,6 +36,7 @@ namespace BitBook.Web
                 else
                 {
                     Session["UserId"] = user._id;
+                    Session["LoggedInUser"] = user.UserName;
                 }                
             }
             catch (Exception ex)
