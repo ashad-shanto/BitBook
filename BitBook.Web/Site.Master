@@ -124,7 +124,7 @@
                     <asp:Panel ID="LogPanel" runat="server">
                         <a href='Profile.aspx?user=<%= id %>'><asp:Label ID="Label1" runat="server"></asp:Label></a> | 
                         <asp:LinkButton ID="LinkButton1" runat="server" OnClick="logout">Logout</asp:LinkButton> | 
-                        <asp:LinkButton ID="notifications" runat="server" OnClick="notifications_Click"></asp:LinkButton> 
+                        <asp:LinkButton ID="notifications" runat="server" OnClick="notifications_Click"></asp:LinkButton>
                     </asp:Panel>
                 </div>
             </nav>

@@ -273,7 +273,8 @@ CodeCarvings.Wcs.Piczard.Upload.SimpleImageUpload.prototype =
 
         var oStatusMessage = this.getSubElement(CodeCarvings.Wcs.Piczard.Upload.SimpleImageUpload.subElementSubId_content_statusMessage);
         if (oStatusMessage) {
-            oStatusMessage.innerHTML = "<div style=\"padding:5px;\">" + value + "</div>";
+            oStatusMessage.innerHTML = "<div>" + value + "</div>";
+            //oStatusMessage.innerHTML = "<div style=\"padding:5px;\">" + value + "</div>";
         }
 
         this.updateUI();
@@ -419,9 +420,13 @@ CodeCarvings.Wcs.Piczard.Upload.SimpleImageUpload.prototype =
         var parentElement = this.uploadErrorLightbox.open(windowWidth, windowHeight);
 
         var html = "<div style=\"width:" + windowWidth + "px; height:" + windowHeight + "px; overflow:scroll;\"><div style=\"font-size:12px; color:#cc0000; padding:10px;\">" + message;
-        html += "\r\n<br /><br /><input type=\"button\" value=\"  Continue &raquo;  \" onclick=\"CodeCarvings.Wcs.Piczard.Upload.SimpleImageUpload.hideUploadError('" + this.id + "'); return false;\" /><br />\r\n";
+        html += "\r\n<br /><br /><input type=\"button\" onclick=\"CodeCarvings.Wcs.Piczard.Upload.SimpleImageUpload.hideUploadError('" + this.id + "'); return false;\" /><br />\r\n";
         html += "</div></div>";
         parentElement.innerHTML = html
+        //var html = "<div style=\"width:" + windowWidth + "px; height:" + windowHeight + "px; overflow:scroll;\"><div style=\"font-size:12px; color:#cc0000; padding:10px;\">" + message;
+        //html += "\r\n<br /><br /><input type=\"button\" value=\"  Continue &raquo;  \" onclick=\"CodeCarvings.Wcs.Piczard.Upload.SimpleImageUpload.hideUploadError('" + this.id + "'); return false;\" /><br />\r\n";
+        //html += "</div></div>";
+        //parentElement.innerHTML = html
     },
 
     hideUploadError: function () {

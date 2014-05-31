@@ -16,8 +16,8 @@
         
         .containerDiv
         {
-        	width:100%;
-        	height: 100%;
+        	/*width:100%;
+        	height: 100%;*/
         }
         
         .hiddenDiv
@@ -27,10 +27,10 @@
         
         .fuFile
         {
-            position: absolute;
+            /*position: absolute;
             display: block;
             right: 0;            
-            cursor: default;            
+            cursor: default;*/            
         }        
     </style>
 </head>
@@ -43,7 +43,8 @@
                     <asp:DropDownList runat="server" ID="ddlDummyForceDoPostBackCreation" AutoPostBack="true">
                         <asp:ListItem Text="Dummy" Value="Dummy" Selected="True"></asp:ListItem>
                     </asp:DropDownList>
-                    <asp:Button runat="server" ID="btnUpload" Text="Upload" OnClick="btnUpload_Click" />
+                    <asp:Button runat="server" ID="btnUpload" OnClick="btnUpload_Click" />
+                    <%--upload--%>
                 </div>
             </div>
             

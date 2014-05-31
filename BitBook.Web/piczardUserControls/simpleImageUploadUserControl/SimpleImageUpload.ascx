@@ -33,7 +33,7 @@
             </asp:PlaceHolder>
             
             <asp:PlaceHolder runat="server" ID="phUploadCommands" EnableViewState="false">
-                <div id="<% =HttpUtility.HtmlAttributeEncode(this.GetSubElementId("uploadCommands")) %>" class="ccpz_siu_uploadCommands" style="float: left;">
+                <div id="<% =HttpUtility.HtmlAttributeEncode(this.GetSubElementId("uploadCommands")) %>" style="">
                     <div id="<% =HttpUtility.HtmlAttributeEncode(this.GetSubElementId("uploadContainer_0")) %>" class="ccpz_siu_uploadContainer_0" style="position: relative; width:<% =(this.ButtonSize.Width + 25).ToString() %>px; height:<% =(this.ButtonSize.Height).ToString() %>px; overflow: hidden; display:none;">
                         <asp:Button runat="server" ID="btnBrowseDisabled" CausesValidation="false" Text="Browse..." Enabled="false" CssClass="DoNotApplyButtonStyle" style="display:inline; padding:0; margin:0;" EnableViewState="false" />
                         <asp:Button runat="server" ID="btnCancelUpload" CausesValidation="false" Text="Cancel upload" CssClass="DoNotApplyButtonStyle" style="display:none; padding:0; margin:0;" EnableViewState="false" />
@@ -78,10 +78,6 @@
     </div>
 </div>
 <asp:PlaceHolder runat="server" ID="phDesignTimeEnd" EnableViewState="false">
-    </div>
-    <div style="margin:5px; padding: 5px; border: solid 1px #c6c6c6; background-color: #d6d6d6; font-size: 12px; font-family:Arial,Hevetica,sans-serif;text-align:left;">
-        <span style="font-weight:bold;">Piczard</span> - .NET Image Manipulation Library by Sergio Turolla<br />
-         SimpleImageUpload User Control &nbsp;v 3.0.5
     </div>
 </asp:PlaceHolder>  
         

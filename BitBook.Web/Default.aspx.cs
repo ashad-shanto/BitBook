@@ -54,7 +54,7 @@ namespace BitBook.Web
             try
             {
                 user = account.UserLogin(SignInEmailTextBox.Text.ToString(), SignInPasswordTextox.Text.ToString());
-                if(user.UserName == null)
+                if(user == null)
                 {
                     //Alert.Text = "Invalid username or password!";
                 }
