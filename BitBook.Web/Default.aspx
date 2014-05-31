@@ -7,6 +7,13 @@
             $("#SearchBarTextBox").hide();
         });
     </script>--%>
+    <script type="text/javascript">
+        function ValidateForm()
+        {
+            alert("Please Complete The Form");
+        }
+    </script>
+
 </asp:Content>
 <asp:Content runat="server" ID="BodyContent" ContentPlaceHolderID="MainContent">
 

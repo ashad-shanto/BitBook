@@ -42,7 +42,15 @@
         </script>
     </asp:PlaceHolder>
     <script type="text/javascript">
-        //<![CDATA[
+
+        function NoUserFoundMsg()
+        {
+            alert("No User Found");
+        }
+    </script>
+
+    <script type="text/javascript">
+            //<![CDATA[
         function fvPicture1_Validate(sender, args) {
             // Validate the Picture1 (must contain a value)
             args.IsValid = CodeCarvings.Wcs.Piczard.Upload.SimpleImageUpload.get_hasImage("<%= CodeCarvings.Piczard.Web.Helpers.JSHelper.EncodeString(this.Upload.ClientID) %>");;

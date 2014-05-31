@@ -17,18 +17,22 @@ namespace BitBook.Web
     public partial class Profile : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
-        {     
-            if(Session["UserId"] != null && Request["user"] != null)
+        {
+            if (Session["UserId"] != null && Request["user"] != null)
             {
-                UserInformation info = new UserInformation();    
+                UserInformation info = new UserInformation();
                 bool frndNotify = info.CheckFriendShip(new ObjectId(Session["UserId"].ToString()), new ObjectId(Request["user"].ToString()));
                 if (Session["UserId"].ToString() != Request["user"].ToString())
                 {
-                    ImageButton.Visible = false; Update.Visible = false; stausField.Visible = false; addFriend.Visible = true;
+                    ImageButton.Visible = false;
+                    Update.Visible = false;
+                    stausField.Visible = false;
+                    addFriend.Visible = true;
                 }
                 if (frndNotify == true)
                 {
-                    addFriend.Text = "Friend Request Sent"; addFriend.Enabled = false;
+                    addFriend.Text = "Friend Request Sent";
+                    addFriend.Enabled = false;
                 }
                 if (!this.IsPostBack)
                 {
@@ -56,21 +60,25 @@ namespace BitBook.Web
                 Name.Text = aUser.UserName;
                 Email.Text = aUser.Email;
                 Location.Text = aUser.UserCity + ", " + aUser.UserCountry;
-                if(aUser.ProfilePic != null)
+                if (aUser.ProfilePic != null)
                 {
                     Image1.ImageUrl = "~/Images/Propic/" + aUser.ProfilePic;
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 throw new Exception("Error retrieving data!");
             }
             finally
             {
-                txtName.Text = Name.Text; txtName.Visible = false;
-                txtEmail.Text = Email.Text; txtEmail.Visible = false;
-                txtCity.Text = "Dhaka"; txtCity.Visible = false;
-                txtCountry.Text = "Bangladesh"; txtCountry.Visible = false;
+                txtName.Text = Name.Text;
+                txtName.Visible = false;
+                txtEmail.Text = Email.Text;
+                txtEmail.Visible = false;
+                txtCity.Text = "Dhaka";
+                txtCity.Visible = false;
+                txtCountry.Text = "Bangladesh";
+                txtCountry.Visible = false;
             }
         }
 
@@ -86,8 +94,12 @@ namespace BitBook.Web
 
         protected void HideControl(object sender, EventArgs e)
         {
-            txtName.Visible = true; txtEmail.Visible = true; txtCity.Visible = true; txtCountry.Visible = true;
-            Update.Visible = false; Update2.Visible = true;
+            txtName.Visible = true;
+            txtEmail.Visible = true;
+            txtCity.Visible = true;
+            txtCountry.Visible = true;
+            Update.Visible = false;
+            Update2.Visible = true;
         }
 
         protected void Update2_Click(object sender, EventArgs e)
@@ -109,7 +121,9 @@ namespace BitBook.Web
             }
             finally
             {
-                ShowData(); Update.Visible = true; Update2.Visible = false;
+                ShowData();
+                Update.Visible = true;
+                Update2.Visible = false;
             }
         }
 
@@ -141,7 +155,7 @@ namespace BitBook.Web
         protected void UserPost_Click(object sender, EventArgs e)
         {
             string imgoutname;
-            if(PostPic.HasImage == true)
+            if (PostPic.HasImage == true)
             {
                 string imgsource = PostPic.SourceImageClientFileName;
                 imgoutname = CodeCarvings.Piczard.Helpers.IOHelper.GetUniqueFileName("~/Images/PostPic/", imgsource);
@@ -190,14 +204,14 @@ namespace BitBook.Web
                     PostManage manage = new PostManage();
                     manage.RemovePost(new ObjectId(e.CommandArgument.ToString()));
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     throw new Exception("Error occured while deleting post!");
                 }
                 finally
                 {
                     BindRepeater();
-                }                
+                }
             }
             if (e.CommandName == "Like")
             {
@@ -205,7 +219,7 @@ namespace BitBook.Web
                 {
                     PostManage manage = new PostManage();
                     manage.LikePost(new ObjectId(e.CommandArgument.ToString()), new ObjectId(Session["UserId"].ToString()));
-                    
+
                 }
                 catch (Exception ex)
                 {
@@ -248,7 +262,8 @@ namespace BitBook.Web
             NotificationManage manage = new NotificationManage();
             manage.AddNotification(notify);
 
-            addFriend.Text = "Friend Request Sent"; addFriend.Enabled = false;
+            addFriend.Text = "Friend Request Sent";
+            addFriend.Enabled = false;
         }
 
         protected void SearchButton_Click(object sender, EventArgs e)
@@ -257,17 +272,26 @@ namespace BitBook.Web
             var userId = userInfo.GetByUserName(SearchBarTextBox.Text);
             try
             {
-                if(userId.UserName != null)
-                Response.Redirect("~/BitBooks/Profile.aspx?user=" + userId._id.ToString(),false);
+                if (userId.UserName != null)
+                    Response.Redirect("~/BitBooks/Profile.aspx?user=" + userId._id.ToString(), false);
                 else
-                Response.Redirect("~/BitBooks/Profile.aspx", false);
+                    Response.Redirect("~/BitBooks/Profile.aspx", false);
+
 
             }
             catch (Exception ex)
             {
-                Response.Redirect("~/BitBooks/Profile.aspx",false);
+                Response.Redirect("~/BitBooks/Profile.aspx", false);
+                if (userId == null)
+                {
+                    Page.ClientScript.RegisterStartupScript(this.GetType(), "myScript", "NoUserFoundMsg();", true);
+                }
+
+                else
+                {
+                    Response.Redirect("~/BitBooks/Profile.aspx?user=" + userId._id.ToString(), false);
+                }
             }
-            
         }
     }
 }

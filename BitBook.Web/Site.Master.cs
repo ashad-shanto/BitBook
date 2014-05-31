@@ -1,5 +1,7 @@
-﻿using BitBook.Manager.UserManager;
+﻿using BitBook.Manager.NotificationManager;
+using BitBook.Manager.UserManager;
 using BitBook.Model;
+using MongoDB.Bson;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -90,6 +92,13 @@ namespace BitBook.Web
             Session["UserId"] = String.Empty;
             Session["LoggedInUser"] = String.Empty;
             Response.Redirect("~/Default.aspx");
+        }
+
+        protected void notifications_Click(object sender, EventArgs e)
+        {
+            NotificationManage manage = new NotificationManage();
+            int countNot = manage.CountUnreadNotifications(new ObjectId(Session["UserId"].ToString()));
+            notifications.Text = "You have " + countNot + " unread notifications!";
         }
     }
 }

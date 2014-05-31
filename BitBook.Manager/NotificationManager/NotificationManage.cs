@@ -62,8 +62,7 @@ namespace BitBook.Manager.NotificationManager
                 allNotification = repo.GetAllNotification(userId);
             }
             catch (Exception ex)
-            {
-                
+            {                
                 throw new Exception("Error fetching notifications" + ex);
             }
             return allNotification;
