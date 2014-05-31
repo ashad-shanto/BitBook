@@ -125,12 +125,14 @@ article {
     font-size: smaller;
 }
 
-
 /*#region profile page */
 .profile-banner {
     background-color: #fff;
     padding: 0.4em;
     border-radius: 1.6px;
+}
+
+.clipped {
 }
 
 #MainContent_UpdateImage, #MainContent_Upload_btnEdit, #MainContent_Upload_btnRemove, #fuFile, .image-button-edit, .image-button-edit-image {
@@ -191,7 +193,7 @@ article {
     max-width: 100%;
     min-width: 100%;
     min-height: 3.6rem;
-    max-height:5rem;
+    max-height: 5rem;
 }
 
 /*#region piczard image style overrides */
@@ -244,4 +246,46 @@ article {
     height: 3rem !important;
 }
 
+.clear {
+    background: #dedede;
+    height: 4rem;
+}
 /*#endregion */
+
+/* searchList Style */
+
+.search-button {
+    width: 8rem;
+}
+
+ul#ui-id-1 {
+    background-color: #ddd;
+    width: 150px;
+    padding: 5px 0px 0px 10px;
+}
+
+#ui-id-1 li {
+    height: 30px;
+    padding-bottom: 5px;
+    list-style: none;
+    font-weight: bolder;
+}
+
+/*feed*/
+.feed-item {
+    padding: 1.2rem;
+    background-color: #fff;
+    padding: 1.2rem;
+}
+
+.border-right{
+    border-right: 1px groove #dedede;
+}
+
+.feed-link{
+    color: rgba(0, 191, 255,0.5)!important;
+}
+.feed-link:hover{
+    color: rgba(0, 191, 255, 1.0);
+    background-color: #fff;
+}

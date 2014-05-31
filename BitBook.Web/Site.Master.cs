@@ -75,17 +75,21 @@ namespace BitBook.Web
             }
             else
             {
-                UserInformation info = new UserInformation();
-                User aUser = new User();
-                aUser = info.GetUserById(Session["UserId"].ToString());
-                Label1.Text = aUser.UserName;
+                //UserInformation info = new UserInformation();
+                //User aUser = new User();
+                //aUser = info.GetUserById(Session["UserId"].ToString());
+                //Label1.Text = aUser.UserName;
+
+                Label1.Text = Session["LoggedInUser"].ToString();
+
             }
         }
 
         protected void logout(object sender, EventArgs e)
         {
-            Response.Redirect("Default.aspx");
             Session["UserId"] = String.Empty;
+            Session["LoggedInUser"] = String.Empty;
+            Response.Redirect("~/Default.aspx");
         }
     }
 }

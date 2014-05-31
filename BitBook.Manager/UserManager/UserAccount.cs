@@ -77,11 +77,35 @@ namespace BitBook.Manager.UserManager
             }
             return aUser;
         }
+        //Return true if mail id is already in use
+        public bool CheckEmailValidity(string email)
+        {
+            bool used = false;
+            try
+            {
+                used = repo.CheckEmailValidity(email);
+            }
+            catch (Exception ex)
+            {
+                
+                throw new Exception("Error"+ex);
+            }
+            return used;
+        }
+        //Return true is mail id is valid
         private bool IsValidMailAddress(string email)
         {
             Regex mailRegx = new Regex(@"^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$");
             bool valid = false;
-            valid = mailRegx.IsMatch(email);
+            try
+            {
+                valid = mailRegx.IsMatch(email);
+            }
+            catch (Exception)
+            {
+                throw new Exception("Error checking email structure");
+            }
+            
             return valid;
         }
     }

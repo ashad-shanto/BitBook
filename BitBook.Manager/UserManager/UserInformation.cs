@@ -72,11 +72,23 @@ namespace BitBook.Manager.UserManager
             }
         }
 
+        //Return True if user exist
         public bool UserExists(ObjectId userId)
         {
             return repo.CheckUserExist(userId);
         }
-
+        //Return True if email is already in use
+        public bool CheckEmailValidity(string email)
+        {
+            if(!string.IsNullOrWhiteSpace(email))
+            {
+                return repo.CheckEmailValidity(email);
+            }
+            else
+            {
+                return false;
+            }
+        }
         public List<User> SearchUserByMatchingName(string nameChunk)
         {
             List<User> allMatchedUser = new List<User>();
@@ -89,6 +101,85 @@ namespace BitBook.Manager.UserManager
                 throw new Exception("Error finding users" + ex);
             }
             return allMatchedUser;
+        }
+        public bool CheckFriendShip(ObjectId userId, ObjectId anotherId)
+        {
+            try
+            {
+                return repo.CheckFriendship(userId, anotherId);
+            }
+            catch (Exception ex)
+            {
+                
+                throw new Exception("Error friendship checking process");
+            }
+        }
+        public bool AddFriend(ObjectId userId, UserBasic friend)
+        {
+            try
+            {
+                if (string.IsNullOrWhiteSpace(userId.ToString()) || string.IsNullOrWhiteSpace(friend._id.ToString()))
+                {
+                    return false;
+                }
+                else
+                {
+                    return repo.AddFriend(userId, friend);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error adding friend");
+            } 
+        }
+        public bool RemoveFriend(ObjectId id, UserBasic friend)
+        {
+            try
+            {
+                if (string.IsNullOrWhiteSpace(id.ToString()) || string.IsNullOrWhiteSpace(friend._id.ToString()))
+                {
+                    return false;
+                }
+                else
+                {
+                    return repo.RemoveFriend(id, friend);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error adding friend");
+            } 
+        }
+        public User GetByUserName(string userName)
+        {
+            User aUser = new User();
+            try
+            {
+                if (!string.IsNullOrWhiteSpace(userName))
+                {
+                    aUser = repo.GetByUserName(userName);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error"+ex);
+            }
+            return aUser;
+        }
+        //Return true if both are friends
+        public bool CheckFriendship(ObjectId userId, ObjectId anotherId)
+        {
+            bool isFriend = false;
+            try
+            {
+                isFriend = repo.CheckFriendship(userId,anotherId);
+            }
+            catch (Exception ex)
+            {
+                
+                throw new Exception("Error"+ex);
+            }
+            return isFriend;
         }
     }
 }

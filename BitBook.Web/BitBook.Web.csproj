@@ -137,7 +137,35 @@
     <Content Include="About.aspx" />
     <Content Include="Account\OpenAuthProviders.ascx" />
     <Content Include="Account\RegisterExternalLogin.aspx" />
+    <Content Include="BitBooks\UserInfoServices.asmx" />
     <Content Include="Contact.aspx" />
+    <Content Include="Content\app.css" />
+    <Content Include="Content\foundation\css\foundation.css" />
+    <Content Include="Content\foundation\css\foundation.min.css" />
+    <Content Include="Content\foundation\css\normalize.css" />
+    <Content Include="Content\foundation\js\foundation.min.js" />
+    <Content Include="Content\foundation\js\foundation\foundation.abide.js" />
+    <Content Include="Content\foundation\js\foundation\foundation.accordion.js" />
+    <Content Include="Content\foundation\js\foundation\foundation.alert.js" />
+    <Content Include="Content\foundation\js\foundation\foundation.clearing.js" />
+    <Content Include="Content\foundation\js\foundation\foundation.dropdown.js" />
+    <Content Include="Content\foundation\js\foundation\foundation.equalizer.js" />
+    <Content Include="Content\foundation\js\foundation\foundation.interchange.js" />
+    <Content Include="Content\foundation\js\foundation\foundation.joyride.js" />
+    <Content Include="Content\foundation\js\foundation\foundation.js" />
+    <Content Include="Content\foundation\js\foundation\foundation.magellan.js" />
+    <Content Include="Content\foundation\js\foundation\foundation.offcanvas.js" />
+    <Content Include="Content\foundation\js\foundation\foundation.orbit.js" />
+    <Content Include="Content\foundation\js\foundation\foundation.reveal.js" />
+    <Content Include="Content\foundation\js\foundation\foundation.tab.js" />
+    <Content Include="Content\foundation\js\foundation\foundation.tooltip.js" />
+    <Content Include="Content\foundation\js\foundation\foundation.topbar.js" />
+    <Content Include="Content\foundation\js\foundation\jquery.cookie.js" />
+    <Content Include="Content\foundation\js\vendor\fastclick.js" />
+    <Content Include="Content\foundation\js\vendor\jquery.cookie.js" />
+    <Content Include="Content\foundation\js\vendor\jquery.js" />
+    <Content Include="Content\foundation\js\vendor\modernizr.js" />
+    <Content Include="Content\foundation\js\vendor\placeholder.js" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
@@ -235,10 +263,14 @@
     <Content Include="piczardUserControls\simpleImageUploadUserControl\simpleImageUpload.js" />
     <Content Include="piczardUserControls\simpleImageUploadUserControl\upload.aspx" />
     <Content Include="piczardUserControls\simpleImageUploadUserControl\wait.gif" />
-    <Content Include="Scripts\jquery-1.8.2.js" />
-    <Content Include="Scripts\jquery-1.8.2.min.js" />
-    <Content Include="Scripts\jquery-ui-1.8.24.js" />
-    <Content Include="Scripts\jquery-ui-1.8.24.min.js" />
+    <None Include="Scripts\jquery-2.1.0.intellisense.js" />
+    <Content Include="Scripts\jquery-2.1.0.js" />
+    <Content Include="Scripts\jquery-2.1.0.min.js" />
+    <None Include="Scripts\jquery-2.1.1.intellisense.js" />
+    <Content Include="Scripts\jquery-2.1.1.js" />
+    <Content Include="Scripts\jquery-2.1.1.min.js" />
+    <Content Include="Scripts\jquery-ui-1.10.4.js" />
+    <Content Include="Scripts\jquery-ui-1.10.4.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\WebForms\DetailsView.js" />
     <Content Include="Scripts\WebForms\Focus.js" />
@@ -266,6 +298,8 @@
     <Content Include="Bundle.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Scripts\jquery-2.1.0.min.map" />
+    <Content Include="Scripts\jquery-2.1.1.min.map" />
     <None Include="Scripts\_references.js" />
     <Content Include="Site.Mobile.Master" />
     <None Include="Web.Debug.config">
@@ -300,6 +334,10 @@
       <DependentUpon>RegisterExternalLogin.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="BitBooks\UserInfoServices.asmx.cs">
+      <DependentUpon>UserInfoServices.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Contact.aspx.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -362,6 +400,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Images\PostPic\" />
     <Folder Include="Images\ProPic\" />
   </ItemGroup>
   <ItemGroup>
