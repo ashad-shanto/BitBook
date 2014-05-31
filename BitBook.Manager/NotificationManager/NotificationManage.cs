@@ -67,5 +67,29 @@ namespace BitBook.Manager.NotificationManager
             }
             return allNotification;
         }
+        public bool UpdateNotificationStatus(ObjectId nId)
+        {
+            try
+            {
+                return repo.UpdateNotificationStatus(nId);
+            }
+            catch (Exception ex)
+            {
+                
+                throw new Exception("Error"+ex);
+            }
+        }
+        public Notification GetNotificationById(ObjectId nId)
+        {
+            try
+            {
+                return repo.GetNotificationById(nId);
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception("Error" + ex);
+            }
+        }
     }
 }

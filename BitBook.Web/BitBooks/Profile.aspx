@@ -48,6 +48,14 @@
             alert("No User Found");
         }
     </script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#likeButton").on("click", function () {
+                $("#unlikeButton").show();
+                $("#likeButton").hide();
+            });
+        });
+    </script>
 
     <script type="text/javascript">
             //<![CDATA[
@@ -101,10 +109,12 @@
         </p>
             <h4><%= Name.Text %>'s Friend's</h4>
             <ul>
-            <asp:Repeater ID="FriendList" runat="server">
-                <ItemTemplate>                    
-                    <li><a href="#">
-                        <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
+            <asp:Repeater ID="FriendList" runat="server" OnItemCommand="FriendList_ItemCommand">
+                <ItemTemplate>   
+                <li><asp:Image ID="Image2" runat="server" ImageUrl='~/BitBooks/ProPic/<%#Eval("ProfilePic") %>' />                 
+                    <a href='Profile.aspx?user=<%#Eval("_id") %>'>
+                        <asp:Label ID="Label1" runat="server" Text='<%#Eval("Username") %>'></asp:Label>
+                        <asp:LinkButton ID="dltFrnd" CommandArgument='<%#Eval("_id") %>' CommandName="Delete" runat="server">Delete</asp:LinkButton>
                     </a></li>
                 </ItemTemplate>
             </asp:Repeater>
@@ -117,7 +127,7 @@
                 <asp:Button ID="UserPost" runat="server" Text="Update Bit" OnClick="UserPost_Click" />
             </div>
             <ul style="list-style-type:none; margin-left:50px; width:80%">
-            <asp:Repeater ID="UserPosts" runat="server" OnItemCommand="UserPosts_ItemCommand">
+            <asp:Repeater ID="UserPosts" runat="server" OnItemCommand="UserPosts_ItemCommand" OnItemDataBound="UserPosts_ItemDataBound">
                 <ItemTemplate>                    
                     <li>
                         <div style="width:10%; float:left">
@@ -128,16 +138,23 @@
                             <p><%#Eval("PostBody") %></p>
                             <img src="../Images/PostPic/<%#Eval("PhotoName") %>" alt="" style="width:80%" />
                         </div>
+
+                        <asp:UpdatePanel ID="LikeUpdatePanel" runat="server">
+                            <ContentTemplate>
+                                
                         <div style="width:15%; float:left">
                             <asp:Button runat="server" ID="deleteBtn" Text="Unbit" CommandArgument='<%#Eval("_id") %>' CommandName="Delete" Width="80px" />
                             <asp:LinkButton ID="likeButton" runat="server" CommandArgument='<%#Eval("_id") %>' CommandName="Like">Like</asp:LinkButton>
                             <asp:Label ID="Label2" runat="server" Text='<%#Eval("LikeCount") %>'></asp:Label>
                             <asp:LinkButton ID="unlikeButton" runat="server" CommandArgument='<%#Eval("_id") %>' CommandName="Unlike" Visible="false">Unlike</asp:LinkButton>
                         </div>
+                            </ContentTemplate>
+                        </asp:UpdatePanel>
+
                     </li>
                 </ItemTemplate>
             </asp:Repeater> 
-            </ul>           
+            </ul>         
         </div>
     </asp:Panel>
 </asp:Content>

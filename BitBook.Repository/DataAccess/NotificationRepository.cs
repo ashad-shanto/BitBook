@@ -20,7 +20,7 @@ namespace BitBook.Repository.DataAccess
             try
             {
                 var query = Query.And(
-                      Query<Notification>.EQ(e => e._id, userId),
+                      Query<Notification>.EQ(e => e.NotificationFor, userId),
                       Query<Notification>.EQ(e => e.Status, 0)
                   );
                 count = (int)Collection.FindAs<Notification>(query).Count();
@@ -37,7 +37,7 @@ namespace BitBook.Repository.DataAccess
             try
             {
                 var query = Query.And(
-                      Query<Notification>.EQ(e => e._id, userId),
+                      Query<Notification>.EQ(e => e.NotificationFor, userId),
                       Query<Notification>.EQ(e => e.Status, 0)
                   );
                 allNotification = Collection.FindAs<Notification>(query).ToList();
@@ -63,6 +63,20 @@ namespace BitBook.Repository.DataAccess
                 throw new Exception(""+ex);
             }
             return done;
+        }
+        public Notification GetNotificationById(ObjectId nId)
+        {
+            Notification aNotification = new Notification();
+            try
+            {
+                aNotification = Collection.FindAs<Notification>(Query<Notification>.EQ(n => n._id, nId)).FirstOrDefault();
+            }
+            catch (Exception ex)
+            {
+                
+                throw new Exception("Error"+ex);
+            }
+            return aNotification;
         }
     }
 }

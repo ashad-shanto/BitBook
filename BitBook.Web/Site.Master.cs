@@ -68,7 +68,7 @@ namespace BitBook.Web
                 }
             }
         }
-
+        public string id;
         protected void Page_Load(object sender, EventArgs e)
         {
             if(Session["UserId"] == null)
@@ -81,24 +81,25 @@ namespace BitBook.Web
                 //User aUser = new User();
                 //aUser = info.GetUserById(Session["UserId"].ToString());
                 //Label1.Text = aUser.UserName;
-
+                id = Session["UserId"].ToString();
                 Label1.Text = Session["LoggedInUser"].ToString();
+                NotificationManage manage = new NotificationManage();
+                int countNot = manage.CountUnreadNotifications(new ObjectId(Session["UserId"].ToString()));
+                notifications.Text = "You have " + countNot + " unread notifications!";
 
             }
         }
 
         protected void logout(object sender, EventArgs e)
         {
-            Session["UserId"] = String.Empty;
+            Session["UserId"] = null;
             Session["LoggedInUser"] = String.Empty;
             Response.Redirect("~/Default.aspx");
         }
 
         protected void notifications_Click(object sender, EventArgs e)
         {
-            NotificationManage manage = new NotificationManage();
-            int countNot = manage.CountUnreadNotifications(new ObjectId(Session["UserId"].ToString()));
-            notifications.Text = "You have " + countNot + " unread notifications!";
+            Response.Redirect("~/BitBooks/Notification.aspx");
         }
     }
 }

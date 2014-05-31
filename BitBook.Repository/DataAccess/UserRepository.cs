@@ -133,9 +133,15 @@ namespace BitBook.Repository.DataAccess
         public bool AddFriend(ObjectId userId, UserBasic friend)
         {
             bool addSuccess = false;
+            UserBasic basic = new UserBasic();
             try
             {
                 var query = Collection.Update(Query<User>.EQ(u => u._id, userId), Update<User>.AddToSet(u => u.Friends, friend));
+                var user = GetById(userId);
+                basic._id = user._id;
+                basic.ProfilePic = user.ProfilePic;
+                basic.Username = user.UserName;
+                var query2 = Collection.Update(Query<User>.EQ(u => u._id, friend._id), Update<User>.AddToSet(u => u.Friends, basic));
                 addSuccess = true;
             }
             catch (Exception ex)
@@ -147,10 +153,15 @@ namespace BitBook.Repository.DataAccess
         public bool RemoveFriend(ObjectId id, UserBasic friend)
         {
             bool removeSuccess = false;
+            UserBasic basic = new UserBasic();
             try
             {
-               
                 var quer = Collection.Update(Query<User>.EQ(u => u._id, id), Update<User>.Pull(u => u.Friends, friend));
+                var user = GetById(id);
+                basic._id = user._id;
+                basic.ProfilePic = user.ProfilePic;
+                basic.Username = user.UserName;
+                var quer2 = Collection.Update(Query<User>.EQ(u => u._id, friend._id), Update<User>.Pull(u => u.Friends, basic));
                 removeSuccess = true;
             }
             catch (Exception ex)

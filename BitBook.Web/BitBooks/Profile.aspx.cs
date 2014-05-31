@@ -20,7 +20,9 @@ namespace BitBook.Web
         {     
             if(Session["UserId"] != null && Request["user"] != null)
             {
-                UserInformation info = new UserInformation();    
+                UserInformation info = new UserInformation();
+                PostManage manage = new PostManage();
+                
                 bool frndNotify = info.CheckFriendShip(new ObjectId(Session["UserId"].ToString()), new ObjectId(Request["user"].ToString()));
                 if (Session["UserId"].ToString() != Request["user"].ToString())
                 {
@@ -32,6 +34,7 @@ namespace BitBook.Web
                 }
                 if (!this.IsPostBack)
                 {
+
                     this.Upload.AutoOpenImageEditPopupAfterUpload = true;
                     this.Upload.CropConstraint = new FixedCropConstraint(300, 300);
                     this.Upload.CropConstraint.DefaultImageSelectionStrategy = CropConstraintImageSelectionStrategy.WholeImage;
@@ -42,7 +45,7 @@ namespace BitBook.Web
             }
             else
             {
-                Response.Redirect("~/Default.aspx");
+                Response.Redirect("~/Default.aspx", false);
             }
         }
 
@@ -51,6 +54,7 @@ namespace BitBook.Web
             try
             {
                 UserInformation info = new UserInformation();
+                List<UserBasic> friends = new List<UserBasic>();
                 User aUser = new User();
                 aUser = info.GetUserById(Request["user"].ToString());
                 Name.Text = aUser.UserName;
@@ -60,6 +64,9 @@ namespace BitBook.Web
                 {
                     Image1.ImageUrl = "~/Images/Propic/" + aUser.ProfilePic;
                 }
+                friends = aUser.Friends;
+                FriendList.DataSource = friends;
+                FriendList.DataBind();
             }
             catch(Exception ex)
             {
@@ -180,9 +187,11 @@ namespace BitBook.Web
             }
         }
 
-        protected void UserPosts_ItemCommand(object source, RepeaterCommandEventArgs e)
+        public void UserPosts_ItemCommand(object source, RepeaterCommandEventArgs e)
         {
             Button delete = (Button)e.Item.FindControl("deleteBtn");
+            LinkButton like = (LinkButton)e.Item.FindControl("likeButton");
+            LinkButton unlike = (LinkButton)e.Item.FindControl("unlikeButton");
             if (e.CommandName == "Delete")
             {
                 try
@@ -205,7 +214,6 @@ namespace BitBook.Web
                 {
                     PostManage manage = new PostManage();
                     manage.LikePost(new ObjectId(e.CommandArgument.ToString()), new ObjectId(Session["UserId"].ToString()));
-                    
                 }
                 catch (Exception ex)
                 {
@@ -221,7 +229,7 @@ namespace BitBook.Web
                 try
                 {
                     PostManage manage = new PostManage();
-                    manage.RemovePost(new ObjectId(e.CommandArgument.ToString()));
+                    manage.UnLikePost(new ObjectId(e.CommandArgument.ToString()), new ObjectId(Session["UserId"].ToString()));
                 }
                 catch (Exception ex)
                 {
@@ -238,13 +246,14 @@ namespace BitBook.Web
         {
             UserInformation info = new UserInformation();
             User aUser = new User();
-            aUser = info.GetUserById(Request["user"].ToString());
+            aUser = info.GetUserById(Session["UserId"].ToString());
 
             Notification notify = new Notification();
             notify.Friend.Username = aUser.UserName;
             notify.Friend.ProfilePic = aUser.ProfilePic;
             notify.Friend._id = aUser._id;
             notify.Status = 0;
+            notify.NotificationFor = new ObjectId(Request["user"].ToString());
             NotificationManage manage = new NotificationManage();
             manage.AddNotification(notify);
 
@@ -265,6 +274,29 @@ namespace BitBook.Web
                 Response.Redirect("~/BitBooks/Profile.aspx?user=" + userId._id.ToString(), false);
             }
             
+        }
+
+        protected void FriendList_ItemCommand(object source, RepeaterCommandEventArgs e)
+        {
+            LinkButton delete = (LinkButton)e.Item.FindControl("dltFrnd");
+            if (e.CommandName == "Delete")
+            {
+                User aUser = new User();
+                UserBasic basic = new UserBasic();
+                UserInformation info = new UserInformation();
+                aUser = info.GetUserById(e.CommandArgument.ToString());
+                basic._id = aUser._id;
+                basic.Username = aUser.UserName;
+                basic.ProfilePic = aUser.ProfilePic;
+                info.RemoveFriend(new ObjectId(Session["UserId"].ToString()), basic);
+            }
+        }
+
+        protected void UserPosts_ItemDataBound(object sender, RepeaterItemEventArgs e)
+        {
+            LinkButton like = (LinkButton)e.Item.FindControl("likeButton");
+            LinkButton unlike = (LinkButton)e.Item.FindControl("unlikeButton");
+
         }
     }
 }

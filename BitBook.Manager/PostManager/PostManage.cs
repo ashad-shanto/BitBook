@@ -74,5 +74,16 @@ namespace BitBook.Manager.PostManager
                 throw new Exception("Error removing post" + ex);
             }
         }
+        public bool CheckValidLiker(ObjectId postId,ObjectId likerId)
+        {
+            try
+            {
+                return repo.CheckValidLiker(postId, likerId);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error checking liker" + ex);
+            }
+        }
     }
 }

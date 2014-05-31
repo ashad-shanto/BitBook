@@ -87,6 +87,7 @@ namespace BitBook.Web
                 user.UserName = SignUpUserNameTextBox.Text;
                 user.Email = SignUpEmailTextBox.Text;
                 user.Password = SignUpPasswordTextBox.Text;
+                user.ProfilePic = "default.png";
                 account = new UserAccount();
 
                 if(account.VerifyRegistrationData(user))
